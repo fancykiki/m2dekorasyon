@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { CanvasFrameSequence } from './components/hero/CanvasFrameSequence';
+import { CeilingVariantsSection } from './components/CeilingVariantsSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { TransformationSlider } from './components/TransformationSlider';
@@ -32,8 +33,11 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        {/* 1. The Scroll-Controlled Cinematic Hero (160 Frame Canvas Sequence) */}
+        {/* 1. Scroll-scrubbed cinematic hero (96-frame stretch-ceiling film) */}
         <CanvasFrameSequence onScrollToExplore={handleScrollToExplore} />
+
+        {/* 1b. Gergi tavan çeşitleri strip */}
+        <CeilingVariantsSection />
 
         {/* 2. NE YAPIYORUZ? (Services Editorial Showcase) */}
         <ServicesSection />
