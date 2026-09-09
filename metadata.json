@@ -1,0 +1,6 @@
+{
+  "name": "M2 Dekorasyon",
+  "description": "Antalya'nın öncü iç mimarlık, lüks renovasyon ve modern gergi tavan sistemleri stüdyosu. Mekândan deneyime kusursuz dönüşümler.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

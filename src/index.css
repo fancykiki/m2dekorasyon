@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-tech: 'Space Grotesk', monospace;
+    --bg-dark: #050505;
+    --bg-surface: #111111;
+    --bg-surface-elevated: #161616;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-faint: rgba(255, 255, 255, 0.05);
+    --gold-accent: #c8a97e;
+    --tech-orange: #F27D26;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #050505;
+    color: #F5F5F5;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-editorial {
+    letter-spacing: -0.04em;
+  }
+
+  .font-tech {
+    font-family: var(--font-tech);
+  }
+}
+
+/* Sophisticated Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+/* Subtle architectural grain */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Architectural grid lines */
+.arch-grid-pattern {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Sophisticated Dark Glow and Technical Accents */
+.glow-orange {
+  box-shadow: 0 0 20px rgba(242, 125, 38, 0.4);
+}
+
+.glow-soft-white {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+/* Smooth transition helpers */
+.transition-luxury {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+
