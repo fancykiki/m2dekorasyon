@@ -5,7 +5,7 @@
  * frame player: scrolling maps to a frame index and that single frame is drawn to
  * a canvas. Because consecutive frames differ only slightly it reads like video.
  *
- * Usage:  node scripts/extract_hero_frames.cjs <source.mp4> [frameCount] [width]
+ * Usage:  node scripts/extract_hero_frames.cjs <source.mp4> [frameCount] [width] [webpQuality]
  * Output: public/hero-seq/frame-0001.webp ...  (overwrites the folder)
  */
 const { execFileSync } = require('child_process');
@@ -17,7 +17,8 @@ const sharp = require('sharp');
 
 const SRC = process.argv[2];
 const FRAME_COUNT = Number(process.argv[3]) || 96;
-const WIDTH = Number(process.argv[4]) || 1152;
+const WIDTH = Number(process.argv[4]) || 1600;
+const QUALITY = Number(process.argv[5]) || 78;
 const OUT = path.join(__dirname, '..', 'public', 'hero-seq');
 
 if (!SRC || !fs.existsSync(SRC)) {
@@ -35,7 +36,7 @@ if (!SRC || !fs.existsSync(SRC)) {
     if (m) duration = (+m[1]) * 3600 + (+m[2]) * 60 + parseFloat(m[3]);
   }
   const fps = (FRAME_COUNT / duration).toFixed(4);
-  console.log(`source ${SRC}  ~${duration.toFixed(2)}s  ->  ${FRAME_COUNT} frames @ ${fps} fps, ${WIDTH}px`);
+  console.log(`source ${SRC}  ~${duration.toFixed(2)}s  ->  ${FRAME_COUNT} frames @ ${fps} fps, ${WIDTH}px, webp q${QUALITY}`);
 
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'hero-frames-'));
   execFileSync(ffmpeg, [
@@ -53,7 +54,7 @@ if (!SRC || !fs.existsSync(SRC)) {
   for (let i = 0; i < raws.length; i++) {
     const n = String(i + 1).padStart(4, '0');
     const out = path.join(OUT, `frame-${n}.webp`);
-    await sharp(path.join(tmp, raws[i])).webp({ quality: 66, effort: 6 }).toFile(out);
+    await sharp(path.join(tmp, raws[i])).webp({ quality: QUALITY, effort: 6 }).toFile(out);
     total += fs.statSync(out).size;
   }
   fs.rmSync(tmp, { recursive: true, force: true });
