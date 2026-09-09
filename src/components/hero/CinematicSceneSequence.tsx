@@ -211,15 +211,15 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
           </div>
         )}
 
-        {/* Top bar */}
-        <header className="relative z-20 w-full px-6 sm:px-12 pt-6 sm:pt-8 flex items-center justify-between">
+        {/* Top bar — pushed clear of the fixed site navbar on mobile */}
+        <header className="relative z-20 w-full px-6 sm:px-12 pt-20 sm:pt-8 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-2.5 h-2.5 rounded-full bg-[#F27D26] animate-pulse shadow-[0_0_12px_#F27D26]" />
             <div className="flex flex-col">
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-white">
+              <span className="text-[11px] sm:text-sm font-semibold tracking-[0.25em] sm:tracking-[0.3em] uppercase text-white">
                 GERGİ TAVAN & DEKORASYON
               </span>
-              <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#F27D26] uppercase opacity-90">
+              <span className="hidden sm:block text-[10px] sm:text-[11px] font-mono tracking-widest text-[#F27D26] uppercase opacity-90">
                 FRAME {String(Math.round(activeProgress * (FRAME_COUNT - 1)) + 1).padStart(3, '0')} / {FRAME_COUNT} // {chapter.tag}
               </span>
             </div>
@@ -270,8 +270,8 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
           </div>
         </div>
 
-        {/* Bottom scrubber */}
-        <footer className="relative z-20 w-full px-4 sm:px-12 pb-6 sm:pb-8">
+        {/* Bottom scrubber — extra bottom gap on mobile so the floating WhatsApp button clears it */}
+        <footer className="relative z-20 w-full px-4 sm:px-12 pb-20 sm:pb-8">
           <div className="bg-black/75 border border-white/15 backdrop-blur-xl rounded-2xl p-3 sm:p-4 max-w-5xl mx-auto shadow-2xl">
             <div className="relative w-full h-1 bg-white/10 rounded-full mb-3">
               <div
@@ -311,9 +311,12 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
             </div>
 
             <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/50 pt-2.5 border-t border-white/10 mt-2">
-              <span className="text-[#F27D26]">M2 DEKORASYON // TEK ÇEKİM · {FRAME_COUNT} KARE</span>
-              <div className="flex items-center gap-2">
-                <span>İLERLEMEK İÇİN KAYDIR VEYA OYNAT</span>
+              <span className="text-[#F27D26] truncate">
+                <span className="hidden sm:inline">M2 DEKORASYON // </span>TEK ÇEKİM · {FRAME_COUNT} KARE
+              </span>
+              <div className="flex items-center gap-2 shrink-0 pl-3">
+                <span className="sm:hidden">KAYDIR</span>
+                <span className="hidden sm:inline">İLERLEMEK İÇİN KAYDIR VEYA OYNAT</span>
                 <ChevronRight size={11} className="text-[#F27D26]" />
               </div>
             </div>

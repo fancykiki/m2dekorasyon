@@ -50,7 +50,7 @@ export const TransformationSlider: React.FC = () => {
           onMouseLeave={() => setIsDragging(false)}
           onMouseMove={handleMouseMove}
           onTouchMove={handleTouchMove}
-          className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden select-none cursor-ew-resize border border-white/10 shadow-2xl bg-[#111111]"
+          className="relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9] overflow-hidden select-none cursor-ew-resize border border-white/10 shadow-2xl bg-[#111111]"
         >
           {/* AFTER Image (Finished Luxury Interior with Stretch Ceiling) */}
           <div className="absolute inset-0 w-full h-full">
@@ -60,12 +60,13 @@ export const TransformationSlider: React.FC = () => {
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-5 right-5 bg-[#050505]/80 backdrop-blur-md px-3.5 py-1.5 border border-white/10 text-[10px] font-mono text-white flex items-center space-x-2">
+            <div className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-[#050505]/80 backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 border border-white/10 text-[9px] sm:text-[10px] font-mono text-white flex items-center space-x-1.5 sm:space-x-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F27D26]" />
-              <span>SONRASI // M2 İLE TAMAMLANMIŞ</span>
+              <span className="sm:hidden">SONRASI</span>
+              <span className="hidden sm:inline">SONRASI // M2 İLE TAMAMLANMIŞ</span>
             </div>
-            <div className="absolute bottom-5 right-5 text-right max-w-sm">
-              <span className="text-lg sm:text-2xl text-white font-medium block tracking-tight">
+            <div className="hidden sm:block absolute bottom-5 right-5 text-right max-w-sm">
+              <span className="text-lg sm:text-2xl text-white font-medium block tracking-tight leading-snug">
                 AKUSTİK GERGİ TAVAN & 2700K IŞIK
               </span>
               <span className="text-[11px] font-mono text-white/70">
@@ -87,11 +88,12 @@ export const TransformationSlider: React.FC = () => {
                 className="w-full h-full object-cover"
               />
 
-              <div className="absolute top-5 left-5 bg-[#050505]/80 backdrop-blur-md px-3.5 py-1.5 border border-white/10 text-[10px] font-mono text-white/80">
-                ÖNCESİ // HAM MİMARİ MEKAN
+              <div className="absolute top-4 left-4 sm:top-5 sm:left-5 bg-[#050505]/80 backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 border border-white/10 text-[9px] sm:text-[10px] font-mono text-white/80">
+                <span className="sm:hidden">ÖNCESİ</span>
+                <span className="hidden sm:inline">ÖNCESİ // HAM MİMARİ MEKAN</span>
               </div>
-              <div className="absolute bottom-5 left-5 max-w-sm">
-                <span className="text-lg sm:text-2xl text-white/95 font-medium block tracking-tight">
+              <div className="hidden sm:block absolute bottom-5 left-5 max-w-sm">
+                <span className="text-lg sm:text-2xl text-white/95 font-medium block tracking-tight leading-snug">
                   AYDINLATMA ÖNCESİ SESSİZ HACİM
                 </span>
                 <span className="text-[11px] font-mono text-white/60">
@@ -113,12 +115,12 @@ export const TransformationSlider: React.FC = () => {
         </div>
 
         {/* Micro slider hint */}
-        <div className="mt-4 flex items-center justify-between text-[11px] font-mono text-white/40">
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-[11px] font-mono text-white/40">
           <div className="flex items-center space-x-2">
-            <SlidersHorizontal className="w-3 h-3 text-[#F27D26]" />
-            <span>Farkı görmek için sola veya sağa sürükleyin</span>
+            <SlidersHorizontal className="w-3 h-3 text-[#F27D26] shrink-0" />
+            <span>Farkı görmek için sürükleyin</span>
           </div>
-          <span>KONYAALTI BLUE SUITE · 280 m²</span>
+          <span className="text-white/50">KONYAALTI BLUE SUITE · 280 m²</span>
         </div>
 
       </div>
