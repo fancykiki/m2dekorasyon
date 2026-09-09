@@ -20,27 +20,27 @@ const FRAMES: string[] = Array.from(
 const CHAPTERS = [
   {
     at: 0.0,
-    tag: 'MAT GERGİ TAVAN',
-    headline: 'PÜRÜZSÜZ\nBİR BAŞLANGIÇ.',
-    caption: 'Eksiz, gergin, kusursuz mat beyaz yüzey. Eski çatlak tavan tek günde tarih olur.',
+    tag: 'MAT MEMBRAN',
+    headline: 'TEK PARÇA\nGERGİ MEMBRAN.',
+    caption: 'Yüksek yangın sınıfı PVC membran, ısıyla gerdirilip çevre alüminyum harpun profile kilitlenir. Eksiz, antibakteriyel, silinebilir; minimum yükseklik kaybıyla, molozsuz, tek günde.',
   },
   {
     at: 0.3,
-    tag: 'GİZLİ IŞIK',
-    headline: 'IŞIK,\nKENARLARDAN DOĞAR.',
-    caption: 'Perimetre gizli LED kanalı uyanır; tavan duvardan ayrılır, mekân derinlik ve sıcaklık kazanır.',
+    tag: 'GİZLİ KANAL AYDINLATMA',
+    headline: 'DUVARDAN\nAYRILAN TAVAN.',
+    caption: 'Çevre profiline entegre lineer LED kanalı; 2700K–4000K ayarlanabilir renk sıcaklığı, kısılabilir (DALI) sürücü. Dolaylı ışık tavanı duvardan koparır, mekânı yüksek ve ferah gösterir.',
   },
   {
     at: 0.6,
-    tag: 'IŞIKLI GERGİ TAVAN',
-    headline: 'BÜTÜN TAVAN,\nIŞIK OLUR.',
-    caption: 'Translusent membran arkadan aydınlanır; gölgesiz, homojen, sıcak bir gökyüzü.',
+    tag: 'ARKADAN AYDINLATMALI MEMBRAN',
+    headline: 'HOMOJEN,\nGÖLGESİZ IŞIK.',
+    caption: 'Translusent membran arkasına LED matris; CRI 90+ ile gölgesiz, homojen difüzyon. Az ışık alan salon, ofis ve banyolarda tavanın tamamı tek bir aydınlatma yüzeyine döner.',
   },
   {
     at: 0.86,
-    tag: 'M2 İMZASI',
+    tag: 'ANAHTAR TESLİM',
     headline: 'M2 DEKORASYON',
-    caption: 'Gergi tavan · gizli aydınlatma · dekorasyon. Antalya’da ölçüden montaja tek elden dönüşüm.',
+    caption: 'Yerinde keşif ve ölçü, projelendirme, membran üretimi ve montaj tek elden. Gergi tavan, gizli aydınlatma, duvar kağıdı ve dekorasyon — Antalya ve bölge geneli.',
   },
 ];
 
