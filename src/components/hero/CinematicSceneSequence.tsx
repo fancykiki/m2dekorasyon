@@ -264,7 +264,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
             <div className="w-2.5 h-2.5 rounded-full bg-[#F27D26] animate-pulse shadow-[0_0_12px_#F27D26]" />
             <div className="flex flex-col">
               <span className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-white">
-                THE MAKING OF A SPACE
+                GERGİ TAVAN & DEKORASYON
               </span>
               <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#F27D26] uppercase opacity-90">
                 FRAME {currentScene.number} / {String(FRAME_COUNT).padStart(2, '0')} // {currentScene.title}
@@ -382,7 +382,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
 
             <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/50 pt-2.5 border-t border-white/10 mt-2">
               <div className="flex items-center gap-3">
-                <span className="text-[#F27D26]">M2 DEKORASYON // EV DÖNÜŞÜMÜ · 10 KARE</span>
+                <span className="text-[#F27D26]">M2 DEKORASYON // GERGİ TAVAN VİTRİNİ · 10 KARE</span>
                 <span className="hidden md:inline text-white/30">|</span>
                 <span className="hidden md:inline text-white/60">ÖNCE → SONRA</span>
               </div>

@@ -1,88 +1,89 @@
 import { Project, Service, FrameStoryMilestone, CinematicScene } from '../types';
 
 /**
- * Scroll-driven hero. Ten keyframes of ONE home makeover, shot from a single
- * fixed interior camera: a tired living room is redecorated (wallpaper, stretch
- * ceiling, lighting, styling), then the tour moves to the renovated kitchen and
- * bathroom, ending on an evening signature shot. Frames live in /public/hero,
- * rendered as a consistent set so the room never jumps. No construction imagery.
+ * Scroll-driven hero. Ten keyframes of ONE living room shot from a single fixed
+ * camera tilted up toward the ceiling: an old cracked ceiling is replaced with a
+ * stretch ceiling, then cycles through its variants (matte, cove-lit, backlit,
+ * gloss, starry sky), then wallpaper + the renovated kitchen and bathroom, ending
+ * on an evening signature. Stretch ceiling ("gergi tavan") is the lead product.
+ * Frames live in /public/hero, rendered as a consistent set so the room never jumps.
  */
 export const CINEMATIC_SCENES: CinematicScene[] = [
   {
     id: 'frame-01',
     number: '01',
     title: 'ÖNCE',
-    subheadline: '01 // MEVCUT DURUM',
-    headline: 'HER EVİN\nBİR POTANSİYELİ VAR.',
-    caption: 'Yıllara yorulmuş bir salon: soluk boya, eski mobilya, sıradan bir tavan ve yorgun bir aydınlatma. Değişime hazır bir mekân.',
-    techDetails: 'Mevcut Durum Analizi · Doğal Gündüz Işığı · Yenileme Öncesi',
-    primaryMaterial: 'Mevcut Salon',
+    subheadline: '01 // MEVCUT TAVAN',
+    headline: 'ESKİ TAVAN,\nEVİ YAŞLANDIRIR.',
+    caption: 'Çatlamış, sararmış alçı tavan, sarkık avize, rutubet lekesi. Yıllara yorulmuş bir salon ve değişime hazır bir tavan.',
+    techDetails: 'Mevcut Durum · Çatlaklı Alçı Tavan · Yenileme Öncesi',
+    primaryMaterial: 'Eski Alçı Tavan',
     src: '/hero/frame-01.webp'
   },
   {
     id: 'frame-02',
     number: '02',
-    title: 'HAZIRLIK',
-    subheadline: '02 // BOŞ SAYFA',
-    headline: 'SIFIRDAN\nHAYAL EDİYORUZ.',
-    caption: 'Mekân boşaltılır, yüzeyler temizlenir. Her şeyin yeniden tasarlanacağı, tertemiz bir başlangıç noktası.',
-    techDetails: 'Yüzey Hazırlığı · Nötr Zemin · Tasarım Planlaması',
-    primaryMaterial: 'Boş Sayfa',
+    title: 'MAT GERGİ TAVAN',
+    subheadline: '02 // EKSİZ YÜZEY',
+    headline: 'TAVAN,\nTEK GÜNDE YENİLENİR.',
+    caption: 'Eksiz, pürüzsüz mat beyaz gergi tavan gerilir ve gizli perimetre derzine kilitlenir. Toz yok, kırım yok, taşınmaya gerek yok.',
+    techDetails: 'Mat PVC Membran · Gizli Perimetre Derzi · 1 Günde Montaj',
+    primaryMaterial: 'Mat Gergi Tavan',
     src: '/hero/frame-02.webp'
   },
   {
     id: 'frame-03',
     number: '03',
-    title: 'DUVAR KAĞIDI',
-    subheadline: '03 // KARAKTER DUVARI',
-    headline: 'KARAKTER\nDUVARDAN BAŞLAR.',
-    caption: 'Ana duvara dokulu tasarım duvar kağıdı ve dikey ahşap lata paneli uygulanır; mekân kimliğini kazanır.',
-    techDetails: 'Dokulu Duvar Kağıdı · Dikey Meşe Lata · Dekoratif Pano',
-    primaryMaterial: 'Tasarım Duvar Kağıdı',
+    title: 'GİZLİ IŞIKLI',
+    subheadline: '03 // ÇEVRE LED KANALI',
+    headline: 'IŞIK,\nTAVANIN İÇİNDEN GELİR.',
+    caption: 'Perimetre boyunca gizli 2700K LED kanalı devreye girer; tavan kenarından yumuşak, sıcak bir ışık havuzu duvarlara yayılır.',
+    techDetails: 'Gizli Çevre LED 2700K · Kademeli Dimmer · Dolaylı Aydınlatma',
+    primaryMaterial: 'Gizli Işıklı Gergi Tavan',
     src: '/hero/frame-03.webp'
   },
   {
     id: 'frame-04',
     number: '04',
-    title: 'GERGİ TAVAN',
-    subheadline: '04 // TAVAN YENİLENİR',
-    headline: 'TAVAN,\nTEK HAMLEDE YENİLENİR.',
-    caption: 'Eski, çatlak tavanın yerini eksiz, pürüzsüz saten gergi tavan ve gizli perimetre derzi alır. Toz yok, kırım yok.',
-    techDetails: 'Eksiz Saten Membran · Gizli Perimetre Derzi · Hızlı Montaj',
-    primaryMaterial: 'M2 Gergi Tavan',
+    title: 'IŞIKLI GERGİ TAVAN',
+    subheadline: '04 // ARKADAN AYDINLATMALI',
+    headline: 'BÜTÜN TAVAN,\nBİR IŞIK KAYNAĞI.',
+    caption: 'Translusent membran arkadan aydınlatılır; tüm tavan gölgesiz, homojen bir ışık panosuna dönüşür. Salon, ofis ve banyolar için.',
+    techDetails: 'Translusent Membran · Arkadan CCT LED · Gölgesiz Difüzyon',
+    primaryMaterial: 'Işıklı (Translusent) Gergi Tavan',
     src: '/hero/frame-04.webp'
   },
   {
     id: 'frame-05',
     number: '05',
-    title: 'AYDINLATMA',
-    subheadline: '05 // IŞIK TASARIMI',
-    headline: 'IŞIK,\nATMOSFERİ KURAR.',
-    caption: 'Gizli LED kanalı, duvarı yıkayan spotlar ve heykelsi sarkıt devreye girer; mekân akşam kimliğine bürünür.',
-    techDetails: 'Gizli LED Kanalı · Duvar Yıkama Spot · Dekoratif Sarkıt · 2700K',
-    primaryMaterial: 'Katmanlı Ev Aydınlatması',
+    title: 'PARLAK GERGİ TAVAN',
+    subheadline: '05 // LAKE / AYNA ETKİSİ',
+    headline: 'MEKÂNI\nİKİYE KATLAYIN.',
+    caption: 'Yüksek parlak lake membran, ayna gibi yansıtarak mekânı altında gösterir; tavan yüksekliği ve ferahlık hissi artar. Dar mekânlar için ideal.',
+    techDetails: 'Yüksek Parlak Lake Membran · Ayna Etkisi · Görsel Yükseklik',
+    primaryMaterial: 'Parlak (Lake) Gergi Tavan',
     src: '/hero/frame-05.webp'
   },
   {
     id: 'frame-06',
     number: '06',
-    title: 'MOBİLYA & DEKOR',
-    subheadline: '06 // DÖŞEME VE STİL',
-    headline: 'DETAYLAR\nHAYAT VERİR.',
-    caption: 'Boucle kanepe, traverten sehpa, yün halı, tekstil, sanat ve yeşil dokunuşlar yerini alır. Mekân bir eve dönüşür.',
-    techDetails: 'Mobilya Seçkisi · Tekstil & Aksesuar · Yeşil Dokunuşlar',
-    primaryMaterial: 'Komple Dekorasyon',
+    title: 'YILDIZLI GÖKYÜZÜ',
+    subheadline: '06 // FİBER OPTİK YILDIZ',
+    headline: 'TAVANINIZA\nBİR GÖKYÜZÜ.',
+    caption: 'Baskılı membran ve fiber optik yıldızlar bir araya gelir; yatak odası, çocuk odası ve sinema odaları için büyülü bir tavan.',
+    techDetails: 'Baskılı Membran · Fiber Optik Yıldız Efekti · Kısılabilir',
+    primaryMaterial: 'Yıldızlı Gökyüzü Gergi Tavan',
     src: '/hero/frame-06.webp'
   },
   {
     id: 'frame-07',
     number: '07',
-    title: 'SONRASI',
-    subheadline: '07 // TAMAMLANMIŞ SALON',
-    headline: 'AYNI EV.\nYENİ HAYAT.',
-    caption: 'Sıcak, davetkâr ve eksiksiz bir yaşam alanı. Duvar kağıdı, gergi tavan ve aydınlatma tek bir dilde buluşur.',
-    techDetails: 'Anahtar Teslim Salon · Sıcak Nötr Palet · Doğal Işık',
-    primaryMaterial: 'Anahtar Teslim Salon',
+    title: 'DUVAR KAĞIDI',
+    subheadline: '07 // KARAKTER DUVARI',
+    headline: 'DUVAR VE TAVAN,\nTEK ELDEN.',
+    caption: 'Ana duvara dokulu tasarım duvar kağıdı ve dikey ahşap lata; üstte mat gergi tavan. Yüzeyler tek bir tasarım dilinde buluşur.',
+    techDetails: 'Dokulu Duvar Kağıdı · Dikey Meşe Lata · Uyumlu Gergi Tavan',
+    primaryMaterial: 'Duvar Kağıdı & Gergi Tavan',
     src: '/hero/frame-07.webp'
   },
   {
@@ -91,8 +92,8 @@ export const CINEMATIC_SCENES: CinematicScene[] = [
     title: 'MUTFAK',
     subheadline: '08 // MUTFAK YENİLEME',
     headline: 'MUTFAK,\nBAŞTAN TASARLANIR.',
-    caption: 'Kulpsuz dolaplar, kuvars tezgah ve şelale ada, fırçalı taş sırt ve tezgah altı LED. Aynı evin devamı, aynı dil.',
-    techDetails: 'Kulpsuz Dolap · Kuvars Şelale Ada · Tezgah Altı LED',
+    caption: 'Kulpsuz dolaplar, kuvars şelale ada, taş sırt ve tezgah altı LED. Tavanda neme dayanıklı gergi tavan ve gömme spot.',
+    techDetails: 'Kulpsuz Dolap · Kuvars Ada · Neme Dayanıklı Gergi Tavan',
     primaryMaterial: 'Komple Mutfak Yenileme',
     src: '/hero/frame-08.webp'
   },
@@ -102,8 +103,8 @@ export const CINEMATIC_SCENES: CinematicScene[] = [
     title: 'BANYO',
     subheadline: '09 // BANYO YENİLEME',
     headline: 'BANYO,\nBİR SPA’YA DÖNÜŞÜR.',
-    caption: 'Büyük ebat traverten dokulu seramik, ışıklı ayna, askılı meşe banyo dolabı ve cam duşakabin. Sıcak, sakin, dingin.',
-    techDetails: 'Büyük Ebat Seramik · Işıklı Ayna · Askılı Dolap · Spa Aydınlatma',
+    caption: 'Büyük ebat seramik, ışıklı ayna, askılı dolap ve cam duşakabin. Tavanda su geçirmez saten gergi tavan — küf yapmaz, dökülmez.',
+    techDetails: 'Büyük Ebat Seramik · Su Geçirmez Saten Gergi Tavan · Işıklı Ayna',
     primaryMaterial: 'Komple Banyo Yenileme',
     src: '/hero/frame-09.webp'
   },
@@ -111,10 +112,10 @@ export const CINEMATIC_SCENES: CinematicScene[] = [
     id: 'frame-10',
     number: '10',
     title: 'M2 İMZASI',
-    subheadline: 'İÇ MİMARLIK · GERGİ TAVAN · DEKORASYON',
+    subheadline: 'GERGİ TAVAN · DUVAR KAĞIDI · DEKORASYON',
     headline: 'M2 DEKORASYON',
-    caption: 'Akşam saatlerinde sıcacık parlayan bir ev. Duvar kağıdından gergi tavana, mutfaktan banyoya — tek elden dönüşüm.',
-    techDetails: 'Akşam Atmosferi · Gergi Tavan Işıltısı · M2 Dekorasyon Antalya',
+    caption: 'Akşam saatlerinde gergi tavan ışıltısıyla nefes alan bir ev. Ölçüden montaja, tek elden, tek günde dönüşüm.',
+    techDetails: 'Akşam Atmosferi · Gizli Işık Havuzu · M2 Dekorasyon Antalya',
     primaryMaterial: 'M2 Anahtar Teslim İmzası',
     src: '/hero/frame-10.webp'
   }
