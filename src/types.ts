@@ -45,18 +45,11 @@ export interface FrameStoryMilestone {
   techDetails: string;
 }
 
-export type TransitionType = 
-  | 'camera-push-floor'
-  | 'blueprint-morph'
-  | 'macro-expand'
-  | 'ceiling-darkness'
-  | 'light-sweep'
-  | 'detail-pullback'
-  | 'lateral-room-pan'
-  | 'golden-light-wipe'
-  | 'twilight-reveal'
-  | 'hero-hold';
-
+/**
+ * One keyframe in the scroll-driven hero sequence. Every frame is the SAME
+ * Antalya villa living room, shot from one locked architectural camera, at a
+ * different stage of its transformation (raw shell -> lit, furnished interior).
+ */
 export interface CinematicScene {
   id: string;
   number: string;
@@ -65,11 +58,9 @@ export interface CinematicScene {
   headline: string;
   caption: string;
   techDetails: string;
-  startProgress: number;
-  endProgress: number;
-  shots: string[];
-  transitionType: TransitionType;
   primaryMaterial: string;
+  /** Public path to the 1920x1080 webp frame. */
+  src: string;
 }
 
 export interface ContactFormState {

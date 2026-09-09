@@ -1,175 +1,122 @@
 import { Project, Service, FrameStoryMilestone, CinematicScene } from '../types';
 
+/**
+ * Scroll-driven hero. Ten keyframes of ONE home makeover, shot from a single
+ * fixed interior camera: a tired living room is redecorated (wallpaper, stretch
+ * ceiling, lighting, styling), then the tour moves to the renovated kitchen and
+ * bathroom, ending on an evening signature shot. Frames live in /public/hero,
+ * rendered as a consistent set so the room never jumps. No construction imagery.
+ */
 export const CINEMATIC_SCENES: CinematicScene[] = [
   {
-    id: 'scene-01',
+    id: 'frame-01',
     number: '01',
-    title: 'THE EMPTY SPACE',
-    headline: 'EVERY SPACE\nSTARTS WITH AN IDEA.',
-    subheadline: '01 // THE EMPTY SPACE',
-    caption: 'Karanlık ve ham bir Akdeniz mimari hacmi. Panoramik camlardan süzülen doğal gün ışığı, çıplak beton ve ışığı bekleyen sonsuz potansiyel.',
-    techDetails: 'Kamera: Sabit Mimari Geniş Açı · Doğal Akdeniz Sabah Işığı · ±0.000 Ham Zemin Kotu',
-    startProgress: 0.00,
-    endProgress: 0.10,
-    shots: [
-      '/cinematic/scene-01/shot-01.webp',
-      '/cinematic/scene-01/shot-02.webp'
-    ],
-    transitionType: 'camera-push-floor',
-    primaryMaterial: 'Ham Beton & Traverten Altlık'
+    title: 'ÖNCE',
+    subheadline: '01 // MEVCUT DURUM',
+    headline: 'HER EVİN\nBİR POTANSİYELİ VAR.',
+    caption: 'Yıllara yorulmuş bir salon: soluk boya, eski mobilya, sıradan bir tavan ve yorgun bir aydınlatma. Değişime hazır bir mekân.',
+    techDetails: 'Mevcut Durum Analizi · Doğal Gündüz Işığı · Yenileme Öncesi',
+    primaryMaterial: 'Mevcut Salon',
+    src: '/hero/frame-01.webp'
   },
   {
-    id: 'scene-02',
+    id: 'frame-02',
     number: '02',
-    title: 'THE VISION',
-    headline: 'FIRST,\nWE IMAGINE.',
-    subheadline: '02 // THE VISION',
-    caption: 'Aynı mekan mimari konsept olarak şekillenir: Rölöve aksları, kesit kotları ve malzeme notasyonu gerçek fiziksel duvar çizgileriyle kenetlenir.',
-    techDetails: 'Teknik Çizim: 1:50 Mimari Plan · Aks Çizgileri · Zemin Kot Morfolojisi',
-    startProgress: 0.10,
-    endProgress: 0.20,
-    shots: [
-      '/cinematic/scene-02/shot-01.webp',
-      '/cinematic/scene-02/shot-02.webp'
-    ],
-    transitionType: 'blueprint-morph',
-    primaryMaterial: 'Mimari Pafta & CAD Aksları'
+    title: 'HAZIRLIK',
+    subheadline: '02 // BOŞ SAYFA',
+    headline: 'SIFIRDAN\nHAYAL EDİYORUZ.',
+    caption: 'Mekân boşaltılır, yüzeyler temizlenir. Her şeyin yeniden tasarlanacağı, tertemiz bir başlangıç noktası.',
+    techDetails: 'Yüzey Hazırlığı · Nötr Zemin · Tasarım Planlaması',
+    primaryMaterial: 'Boş Sayfa',
+    src: '/hero/frame-02.webp'
   },
   {
-    id: 'scene-03',
+    id: 'frame-03',
     number: '03',
-    title: 'MATERIAL',
-    headline: 'MATERIAL\nCREATES\nCHARACTER.',
-    subheadline: '03 // MATERIAL PALETTE',
-    caption: 'Mekanı var eden dokuların makro sinematografisi: Gözenekli honlu traverten, flütlü Amerikan ceviz, fırçalanmış bronz ve saten gergi membran.',
-    techDetails: 'Makro Lens: Sığ Alan Derinliği (f/1.8) · Honlu Doğal Traverten · Masif Amerikan Ceviz',
-    startProgress: 0.20,
-    endProgress: 0.32,
-    shots: [
-      '/cinematic/scene-03/shot-01.webp',
-      '/cinematic/scene-03/shot-02.webp'
-    ],
-    transitionType: 'macro-expand',
-    primaryMaterial: 'Doğal Taş & Masif Ceviz'
+    title: 'DUVAR KAĞIDI',
+    subheadline: '03 // KARAKTER DUVARI',
+    headline: 'KARAKTER\nDUVARDAN BAŞLAR.',
+    caption: 'Ana duvara dokulu tasarım duvar kağıdı ve dikey ahşap lata paneli uygulanır; mekân kimliğini kazanır.',
+    techDetails: 'Dokulu Duvar Kağıdı · Dikey Meşe Lata · Dekoratif Pano',
+    primaryMaterial: 'Tasarım Duvar Kağıdı',
+    src: '/hero/frame-03.webp'
   },
   {
-    id: 'scene-04',
+    id: 'frame-04',
     number: '04',
-    title: 'THE CEILING',
-    headline: 'ARCHITECTURE\nABOVE.',
-    subheadline: '04 // THE STRETCH CEILING',
-    caption: 'Perimetre alüminyum karkas profili ve gerdirilerek kilitlenen saten beyaz akustik gergi tavan membranı. Kamera gökyüzüne bakar gibi yukarı yönelir.',
-    techDetails: 'Alüminyum Z-Profil · Akustik Mikroperfore Membran · Sıfır Sarkma Garantisi',
-    startProgress: 0.32,
-    endProgress: 0.46,
-    shots: [
-      '/cinematic/scene-04/shot-01.webp',
-      '/cinematic/scene-04/shot-02.webp'
-    ],
-    transitionType: 'ceiling-darkness',
-    primaryMaterial: 'M2 Akustik Gergi Membran'
+    title: 'GERGİ TAVAN',
+    subheadline: '04 // TAVAN YENİLENİR',
+    headline: 'TAVAN,\nTEK HAMLEDE YENİLENİR.',
+    caption: 'Eski, çatlak tavanın yerini eksiz, pürüzsüz saten gergi tavan ve gizli perimetre derzi alır. Toz yok, kırım yok.',
+    techDetails: 'Eksiz Saten Membran · Gizli Perimetre Derzi · Hızlı Montaj',
+    primaryMaterial: 'M2 Gergi Tavan',
+    src: '/hero/frame-04.webp'
   },
   {
-    id: 'scene-05',
+    id: 'frame-05',
     number: '05',
-    title: 'LIGHT',
-    headline: 'LIGHT\nDEFINES\nSPACE.',
-    subheadline: '05 // ARCHITECTURAL LIGHTING',
-    caption: 'Karanlık iç mekanda ilk gizli 2400K LED hattı uyanır. Ardından gergi tavanın homojen ışık difüzyonu devreye girerek mekana hacim ve derinlik kazandırır.',
-    techDetails: 'CRI >95 Mimari LED · 2400K-2700K DALI Kademeli Dimmer · Homojen Gölgesiz Difüzyon',
-    startProgress: 0.46,
-    endProgress: 0.58,
-    shots: [
-      '/cinematic/scene-05/shot-01.webp',
-      '/cinematic/scene-05/shot-02.webp'
-    ],
-    transitionType: 'light-sweep',
-    primaryMaterial: 'Entegre 2700K Lineer LED'
+    title: 'AYDINLATMA',
+    subheadline: '05 // IŞIK TASARIMI',
+    headline: 'IŞIK,\nATMOSFERİ KURAR.',
+    caption: 'Gizli LED kanalı, duvarı yıkayan spotlar ve heykelsi sarkıt devreye girer; mekân akşam kimliğine bürünür.',
+    techDetails: 'Gizli LED Kanalı · Duvar Yıkama Spot · Dekoratif Sarkıt · 2700K',
+    primaryMaterial: 'Katmanlı Ev Aydınlatması',
+    src: '/hero/frame-05.webp'
   },
   {
-    id: 'scene-06',
+    id: 'frame-06',
     number: '06',
-    title: 'THE DETAIL',
-    headline: 'DETAIL\nIS THE\nDIFFERENCE.',
-    subheadline: '06 // CRAFTSMANSHIP',
-    caption: 'Ahşap flütlerin traverten birleşimindeki sıfır toleranslı derz, gizli kaset bitişleri ve camın yansımayla kurduğu kusursuz diyalog.',
-    techDetails: 'Zanaat: Sıfır Tolerans Gönye Birleşim · Bronz Gölge Derzi · Yüksek Yansıma Dengeleme',
-    startProgress: 0.58,
-    endProgress: 0.68,
-    shots: [
-      '/cinematic/scene-06/shot-01.webp',
-      '/cinematic/scene-06/shot-02.webp'
-    ],
-    transitionType: 'detail-pullback',
-    primaryMaterial: 'Bronz Derz & Miter Taş Köşe'
+    title: 'MOBİLYA & DEKOR',
+    subheadline: '06 // DÖŞEME VE STİL',
+    headline: 'DETAYLAR\nHAYAT VERİR.',
+    caption: 'Boucle kanepe, traverten sehpa, yün halı, tekstil, sanat ve yeşil dokunuşlar yerini alır. Mekân bir eve dönüşür.',
+    techDetails: 'Mobilya Seçkisi · Tekstil & Aksesuar · Yeşil Dokunuşlar',
+    primaryMaterial: 'Komple Dekorasyon',
+    src: '/hero/frame-06.webp'
   },
   {
-    id: 'scene-07',
+    id: 'frame-07',
     number: '07',
-    title: 'THE INTERIOR',
-    headline: 'THE SPACE\nCOMES TO LIFE.',
-    subheadline: '07 // THE INTERIOR',
-    caption: 'Eksiksiz tamamlanan ana salon: Özel flütlü ceviz TV duvarı, alçak İtalyan kanepe, ipeksi gergi tavan ve mekana hükmeden mimari sükunet.',
-    techDetails: 'Geniş İç Mekan Dolly · Traverten Zemin Yansımaları · 84.5 m² Mimari Yaşam Alanı',
-    startProgress: 0.68,
-    endProgress: 0.82,
-    shots: [
-      '/cinematic/scene-07/shot-01.webp',
-      '/cinematic/scene-07/shot-02.webp'
-    ],
-    transitionType: 'lateral-room-pan',
-    primaryMaterial: 'Komple Mimari Donatı'
+    title: 'SONRASI',
+    subheadline: '07 // TAMAMLANMIŞ SALON',
+    headline: 'AYNI EV.\nYENİ HAYAT.',
+    caption: 'Sıcak, davetkâr ve eksiksiz bir yaşam alanı. Duvar kağıdı, gergi tavan ve aydınlatma tek bir dilde buluşur.',
+    techDetails: 'Anahtar Teslim Salon · Sıcak Nötr Palet · Doğal Işık',
+    primaryMaterial: 'Anahtar Teslim Salon',
+    src: '/hero/frame-07.webp'
   },
   {
-    id: 'scene-08',
+    id: 'frame-08',
     number: '08',
-    title: 'THE LIFESTYLE',
-    headline: 'A HARMONY OF\nFUNCTION & FORM.',
-    subheadline: '08 // THE LIFESTYLE',
-    caption: 'Salondan aynı projenin bağlantılı açık mutfak ve yemek alanına geçiş. Yaşayan, nefes alan ve fonksiyonla estetiği birleştiren Akdeniz lüksü.',
-    techDetails: 'Aynı Villa Projesi · Açık Mutfak & Yemek Pavyonu · Monolitik Taş Ada',
-    startProgress: 0.82,
-    endProgress: 0.90,
-    shots: [
-      '/cinematic/scene-08/shot-01.webp',
-      '/cinematic/scene-08/shot-02.webp'
-    ],
-    transitionType: 'golden-light-wipe',
-    primaryMaterial: 'Doğal Mermer & Koyu Ceviz'
+    title: 'MUTFAK',
+    subheadline: '08 // MUTFAK YENİLEME',
+    headline: 'MUTFAK,\nBAŞTAN TASARLANIR.',
+    caption: 'Kulpsuz dolaplar, kuvars tezgah ve şelale ada, fırçalı taş sırt ve tezgah altı LED. Aynı evin devamı, aynı dil.',
+    techDetails: 'Kulpsuz Dolap · Kuvars Şelale Ada · Tezgah Altı LED',
+    primaryMaterial: 'Komple Mutfak Yenileme',
+    src: '/hero/frame-08.webp'
   },
   {
-    id: 'scene-09',
+    id: 'frame-09',
     number: '09',
-    title: 'GOLDEN HOUR',
-    headline: 'DESIGNED\nFOR LIFE.',
-    subheadline: '09 // MEDITERRANEAN GOLDEN HOUR',
-    caption: 'Batan Akdeniz güneşinin altın huzmeleri panoramik camlardan traverten zemine dökülür; iç mekanın 2700K sıcak ışıklarıyla büyüleyici bir harmoni oluşturur.',
-    techDetails: 'Altın Saat Güneş Açısı (18:45) · Traverten Işık Yansıması · Sinematik Renk Harmonisi',
-    startProgress: 0.90,
-    endProgress: 0.96,
-    shots: [
-      '/cinematic/scene-09/shot-01.webp',
-      '/cinematic/scene-09/shot-02.webp'
-    ],
-    transitionType: 'twilight-reveal',
-    primaryMaterial: 'Doğal Güneş & Amber Hüzmeler'
+    title: 'BANYO',
+    subheadline: '09 // BANYO YENİLEME',
+    headline: 'BANYO,\nBİR SPA’YA DÖNÜŞÜR.',
+    caption: 'Büyük ebat traverten dokulu seramik, ışıklı ayna, askılı meşe banyo dolabı ve cam duşakabin. Sıcak, sakin, dingin.',
+    techDetails: 'Büyük Ebat Seramik · Işıklı Ayna · Askılı Dolap · Spa Aydınlatma',
+    primaryMaterial: 'Komple Banyo Yenileme',
+    src: '/hero/frame-09.webp'
   },
   {
-    id: 'scene-10',
+    id: 'frame-10',
     number: '10',
-    title: 'FINAL HERO',
-    headline: 'M2 DEKORASYON',
+    title: 'M2 İMZASI',
     subheadline: 'İÇ MİMARLIK · GERGİ TAVAN · DEKORASYON',
-    caption: 'Gece çökerken villanın içinden dışarıya süzülen mimari aydınlatma. Antalya\'da hayalden gerçeğe dönüşen zamansız bir sanat eseri.',
-    techDetails: 'Gece Dış Çekim & Işıyan İç Hacim · M2 Dekorasyon Antalya · Anahtar Teslim Başyapıt',
-    startProgress: 0.96,
-    endProgress: 1.00,
-    shots: [
-      '/cinematic/scene-10/shot-01.webp',
-      '/cinematic/scene-10/shot-02.webp'
-    ],
-    transitionType: 'hero-hold',
-    primaryMaterial: 'M2 Anahtar Teslim İmzası'
+    headline: 'M2 DEKORASYON',
+    caption: 'Akşam saatlerinde sıcacık parlayan bir ev. Duvar kağıdından gergi tavana, mutfaktan banyoya — tek elden dönüşüm.',
+    techDetails: 'Akşam Atmosferi · Gergi Tavan Işıltısı · M2 Dekorasyon Antalya',
+    primaryMaterial: 'M2 Anahtar Teslim İmzası',
+    src: '/hero/frame-10.webp'
   }
 ];
 
