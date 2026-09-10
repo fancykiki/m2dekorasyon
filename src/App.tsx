@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import { Navbar } from './components/Navbar';
 import { CanvasFrameSequence } from './components/hero/CanvasFrameSequence';
-import { CeilingVariantsSection } from './components/CeilingVariantsSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { TransformationSlider } from './components/TransformationSlider';
@@ -14,11 +14,30 @@ import { MessageCircle, Phone } from 'lucide-react';
 export default function App() {
   const [lang, setLang] = useState<'TR' | 'EN'>('TR');
 
+  // Smooth, weighted scrolling so the hero camera film and every section
+  // transition read as one continuous move. Skipped for reduced-motion.
+  // Exposed on window.__lenis so programmatic scrolls (nav, CTAs) go through it.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9, touchMultiplier: 1.4, anchors: true });
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+    let raf = 0;
+    const loop = (t: number) => {
+      lenis.raf(t);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => {
+      cancelAnimationFrame(raf);
+      lenis.destroy();
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
+    };
+  }, []);
+
   const handleScrollToExplore = () => {
-    const servicesEl = document.getElementById('services');
-    if (servicesEl) {
-      servicesEl.scrollIntoView({ behavior: 'smooth' });
-    }
+    const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
+    if (lenis) lenis.scrollTo('#services');
+    else document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const toggleLanguage = () => {
@@ -33,11 +52,8 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        {/* 1. Scroll-scrubbed cinematic hero (96-frame stretch-ceiling film) */}
+        {/* 1. Scroll-scrubbed cinematic hero — the continuous architectural camera film */}
         <CanvasFrameSequence onScrollToExplore={handleScrollToExplore} />
-
-        {/* 1b. Gergi tavan çeşitleri strip */}
-        <CeilingVariantsSection />
 
         {/* 2. NE YAPIYORUZ? (Services Editorial Showcase) */}
         <ServicesSection />

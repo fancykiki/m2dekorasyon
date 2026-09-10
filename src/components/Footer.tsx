@@ -3,7 +3,9 @@ import { ArrowUp, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (t: number) => void } }).__lenis;
+    if (lenis) lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
