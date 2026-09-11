@@ -5,9 +5,9 @@ import { ArrowUpRight, MapPin, Camera, ArrowRight } from 'lucide-react';
 
 export const ProjectsSection: React.FC = () => {
   const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
-  // Homepage showcases the first 6 featured projects in high-impact editorial layout
-  const featuredProjects = REAL_PROJECTS.slice(0, 6);
+  const displayedProjects = showAll ? REAL_PROJECTS : REAL_PROJECTS.slice(0, 6);
 
   return (
     <section id="projects" className="relative bg-[#F8F6F0] text-[#141517] py-28 md:py-36 px-6 md:px-12 border-t border-black/8">
@@ -40,7 +40,7 @@ export const ProjectsSection: React.FC = () => {
 
         {/* Large Editorial Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {featuredProjects.map((project) => {
+          {displayedProjects.map((project) => {
             const previewThumbs = project.images.slice(1, 4);
 
             return (
@@ -110,6 +110,19 @@ export const ProjectsSection: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Load More Button if showing initial 6 */}
+        {!showAll && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white border border-black/15 hover:border-[#E29415] hover:bg-[#F8F6F0] text-[#141517] font-mono text-xs tracking-wider uppercase font-semibold transition-all rounded-xs shadow-sm cursor-pointer"
+            >
+              <span>DİĞER 9 PROJEYİ LİSTELE (TOPLAM 15 PROJE)</span>
+              <ArrowRight className="w-4 h-4 text-[#E29415]" />
+            </button>
+          </div>
+        )}
 
         {/* Big Bottom Action to All Projects Page */}
         <div className="mt-16 pt-10 border-t border-black/8 flex flex-col sm:flex-row items-center justify-between gap-6 bg-white p-8 border border-black/8 rounded-xs shadow-[0_20px_50px_-20px_rgba(20,21,23,0.06)]">

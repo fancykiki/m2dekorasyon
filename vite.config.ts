@@ -1,8 +1,8 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { globSync } from 'node:fs';
+import { existsSync, globSync } from 'node:fs';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig, Plugin } from 'vite';
 
 /**
  * Multi-page app: every URL is a real HTML file so titles, meta descriptions,
@@ -25,10 +25,31 @@ const pages = Object.fromEntries(
   ])
 );
 
+/** Ensures local dev requests like `/projeler` redirect or rewrite to `/projeler/` */
+function multiPageCleanUrls(): Plugin {
+  return {
+    name: 'multi-page-clean-urls',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const rawUrl = req.url?.split('?')[0] || '';
+        if (rawUrl && !rawUrl.includes('.') && !rawUrl.endsWith('/')) {
+          const targetHtml = path.resolve(__dirname, rawUrl.replace(/^\//, ''), 'index.html');
+          if (existsSync(targetHtml)) {
+            const query = req.url?.includes('?') ? '?' + req.url.split('?')[1] : '';
+            res.writeHead(301, { Location: rawUrl + '/' + query });
+            res.end();
+            return;
+          }
+        }
+        next();
+      });
+    },
+  };
+}
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), multiPageCleanUrls()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
