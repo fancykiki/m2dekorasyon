@@ -23,3 +23,4 @@ assets-src/
 /*.png
 !public/logo.png
 .playwright-mcp/
+.vercel

@@ -2,6 +2,24 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/gergi-tavan", "destination": "/hizmetler/gergi-tavan/", "permanent": true },
+    { "source": "/duvar-kagidi", "destination": "/hizmetler/duvar-kagidi/", "permanent": true },
+    { "source": "/mutfak-dekorasyon", "destination": "/hizmetler/mutfak-dekorasyon/", "permanent": true },
+    { "source": "/banyo-dekorasyon", "destination": "/hizmetler/banyo-dekorasyon/", "permanent": true },
+    { "source": "/mimari-projelendirme-ve-uygulama", "destination": "/hizmetler/mimari-projelendirme-uygulama/", "permanent": true },
+    { "source": "/asma-tavan-alcipan", "destination": "/hizmetler/gergi-tavan/", "permanent": true },
+    { "source": "/projelerimiz", "destination": "/projeler/", "permanent": true },
+    { "source": "/hizmetlerimiz", "destination": "/hizmetler/", "permanent": true },
+    { "source": "/m2-dekorasyon-katalogu", "destination": "/katalog/", "permanent": true },
+    { "source": "/tv-unite-ve-kitaplik", "destination": "/hizmetler/mimari-projelendirme-uygulama/", "permanent": true },
+    { "source": "/tezgah", "destination": "/hizmetler/mutfak-dekorasyon/", "permanent": true },
+    { "source": "/panel-ve-lake-kapi", "destination": "/hizmetler/mimari-projelendirme-uygulama/", "permanent": true },
+    { "source": "/dusakabin", "destination": "/hizmetler/banyo-dekorasyon/", "permanent": true },
+    { "source": "/3d-cam", "destination": "/hizmetler/gergi-tavan/", "permanent": true },
+    { "source": "/sitemap_index.xml", "destination": "/sitemap.xml", "permanent": true },
+    { "source": "/page-sitemap.xml", "destination": "/sitemap.xml", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
