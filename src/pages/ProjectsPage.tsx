@@ -4,7 +4,7 @@ import { ProjectModal } from '../components/ProjectModal';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { FloatingWhatsApp } from '../components/FloatingWhatsApp';
-import { ChevronRight, Camera, MapPin, ArrowUpRight, Phone } from 'lucide-react';
+import { ChevronRight, Camera, MapPin, ArrowUpRight, Phone, MessageCircle } from 'lucide-react';
 import { waLink, SITE } from '../data/services';
 
 export const ProjectsPage: React.FC = () => {
