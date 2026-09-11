@@ -89,6 +89,7 @@ const html = (o: PageOpts) => {
     <meta name="description" content="${esc(o.description)}" />
 ${o.keywords?.length ? `    <meta name="keywords" content="${esc(o.keywords.join(', '))}" />\n` : ''}    <link rel="canonical" href="${url}" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="google-site-verification" content="evjgVIfX3bECMBJ912XSnp0sybtoieafaXjtJF44N9s" />
     <meta name="author" content="${esc(SITE.name)}" />
     <meta name="geo.region" content="TR-07" />
     <meta name="geo.placename" content="${esc(SITE.city)}" />
