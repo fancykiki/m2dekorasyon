@@ -12,11 +12,19 @@ import {defineConfig} from 'vite';
  * script, which runs automatically before dev and build).
  */
 const pages = Object.fromEntries(
-  ['index.html', ...globSync('hizmetler/**/index.html')].map((file) => [
+  [
+    'index.html',
+    ...globSync('hizmetler/**/index.html'),
+    ...globSync('katalog/index.html'),
+    ...globSync('projeler/**/index.html'),
+    ...globSync('hakkimizda/**/index.html'),
+    ...globSync('iletisim/**/index.html'),
+  ].map((file) => [
     file === 'index.html' ? 'main' : path.dirname(file).replace(/[/\\]/g, '-'),
     path.resolve(__dirname, file),
   ])
 );
+
 
 export default defineConfig(() => {
   return {

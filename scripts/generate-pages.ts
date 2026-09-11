@@ -17,7 +17,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SERVICES, SITE, SERVICE_AREAS } from '../src/data/services';
+import { SERVICES, SITE, SERVICE_AREAS, CATALOG } from '../src/data/services';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s: string) =>
@@ -41,15 +41,19 @@ const localBusiness = {
   '@id': `${SITE.origin}/#business`,
   name: SITE.name,
   url: `${SITE.origin}/`,
+  logo: `${SITE.origin}${SITE.logo}`,
+  image: `${SITE.origin}${SITE.logo}`,
   telephone: SITE.phone,
   email: SITE.email,
+  hasMap: SITE.maps,
+  sameAs: [SITE.instagram, SITE.facebook],
   address: postalAddress,
   geo: { '@type': 'GeoCoordinates', latitude: SITE.lat, longitude: SITE.lng },
   areaServed: SERVICE_AREAS.map((a) => ({ '@type': 'Place', name: `${a}, ${SITE.city}` })),
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       opens: '09:00',
       closes: '19:00',
     },
@@ -65,6 +69,7 @@ interface PageOpts {
   image: string;
   entry: string; // '/src/entries/service.tsx'
   rootAttrs?: string;
+  head?: string; // extra <head> lines (preloads, etc.)
   schema: object[];
 }
 
@@ -100,12 +105,14 @@ ${o.keywords?.length ? `    <meta name="keywords" content="${esc(o.keywords.join
     <meta name="twitter:title" content="${esc(o.title)}" />
     <meta name="twitter:description" content="${esc(o.description)}" />
     <meta name="twitter:image" content="${esc(image)}" />
-${FONTS}
+    <link rel="icon" type="image/png" href="${SITE.logo}" />
+    <link rel="apple-touch-icon" href="${SITE.logo}" />
+${o.head ? o.head + '\n' : ''}${FONTS}
     <script type="application/ld+json">
 ${JSON.stringify(graph, null, 2)}
     </script>
   </head>
-  <body class="bg-[#0c0d0e] text-[#e5e5e7] selection:bg-[#c8a97e] selection:text-[#0c0d0e] antialiased">
+  <body class="bg-[#F8F6F0] text-[#141517] selection:bg-[#E29415]/30 selection:text-[#141517] antialiased">
     <div id="root"${o.rootAttrs ?? ''}></div>
     <script type="module" src="${o.entry}"></script>
   </body>
@@ -221,17 +228,203 @@ for (const s of SERVICES) {
   );
 }
 
+/* ------------------------------------------------------- catalogue */
+const catTitle = `${CATALOG.title} | Gergi Tavan & Duvar Kağıdı Desenleri – M2 Dekorasyon Antalya`;
+const catDesc = `M2 Dekorasyon ${CATALOG.pages} sayfalık desen kataloğu: gergi tavan baskı desenleri ve duvar kağıdı koleksiyonu. Antalya'da yerinde ölçü, uygulama ve montaj.`;
+
+written.push(
+  write(
+    'katalog/index.html',
+    html({
+      path: CATALOG.path,
+      title: catTitle,
+      description: catDesc,
+      keywords: [
+        'gergi tavan desenleri',
+        'duvar kağıdı katalog',
+        'antalya gergi tavan katalog',
+        'desen kataloğu',
+        'm2 dekorasyon katalog',
+      ],
+      image: '/katalog/page-001.webp',
+      entry: '/src/entries/katalog.tsx',
+      // Pages are lazy-loaded, but the first one should start downloading with
+      // the HTML so the book is never blank.
+      head: `    <link rel="preload" as="image" href="/katalog/page-001.webp" type="image/webp">`,
+      schema: [
+        {
+          '@type': 'CollectionPage',
+          '@id': `${SITE.origin}${CATALOG.path}#page`,
+          url: `${SITE.origin}${CATALOG.path}`,
+          name: catTitle,
+          description: catDesc,
+          inLanguage: 'tr-TR',
+          isPartOf: { '@id': `${SITE.origin}/#website` },
+          about: { '@id': `${SITE.origin}/#business` },
+          numberOfItems: CATALOG.pages,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Anasayfa', item: `${SITE.origin}/` },
+            { '@type': 'ListItem', position: 2, name: CATALOG.title, item: `${SITE.origin}${CATALOG.path}` },
+          ],
+        },
+      ],
+    })
+  )
+);
+
+/* ------------------------------------------------------- portfolio / projects */
+const projTitle = 'Projelerimiz | M2 Dekorasyon Antalya İç Mimarlık & Gergi Tavan';
+const projDesc =
+  'Antalya genelinde tamamladığımız iç mimarlık, gergi tavan ve mekânsal dönüşüm uygulama projeleri. 15 seçkin proje ve 250+ fotoğraf.';
+
+written.push(
+  write(
+    'projeler/index.html',
+    html({
+      path: '/projeler/',
+      title: projTitle,
+      description: projDesc,
+      keywords: [
+        'antalya dekorasyon projeleri',
+        'antalya gergi tavan uygulama',
+        'antalya iç mimarlık projeleri',
+        'm2 dekorasyon projeler',
+        'villa tadilat antalya',
+      ],
+      image: '/projeler/proje-1/01.jpg',
+      entry: '/src/entries/projeler.tsx',
+      head: `    <link rel="preload" as="image" href="/projeler/proje-1/01.jpg" type="image/jpeg">`,
+      schema: [
+        {
+          '@type': 'CollectionPage',
+          '@id': `${SITE.origin}/projeler/#page`,
+          url: `${SITE.origin}/projeler/`,
+          name: projTitle,
+          description: projDesc,
+          inLanguage: 'tr-TR',
+          isPartOf: { '@id': `${SITE.origin}/#website` },
+          about: { '@id': `${SITE.origin}/#business` },
+          numberOfItems: 15,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Anasayfa', item: `${SITE.origin}/` },
+            { '@type': 'ListItem', position: 2, name: 'Projeler', item: `${SITE.origin}/projeler/` },
+          ],
+        },
+      ],
+    })
+  )
+);
+
+/* ------------------------------------------------------- about us */
+const aboutTitle = 'Hakkımızda | M2 Dekorasyon Antalya – Gergi Tavan & İç Mimarlık';
+const aboutDesc =
+  'M2 Dekorasyon Antalya: 15 yılı aşkın saha deneyimi, 1.200+ tamamlanan proje, B1 sertifikalı gergi tavan ve ithal duvar kağıdı uzmanlığı. Hikayemiz, tasarım dilimiz ve ilkelerimiz.';
+
+written.push(
+  write(
+    'hakkimizda/index.html',
+    html({
+      path: '/hakkimizda/',
+      title: aboutTitle,
+      description: aboutDesc,
+      keywords: [
+        'm2 dekorasyon hakkında',
+        'antalya dekorasyon firması',
+        'antalya iç mimarlık',
+        'metrekare dekorasyon antalya',
+        'gergi tavan antalya',
+      ],
+      image: '/projeler/proje-1/01.jpg',
+      entry: '/src/entries/hakkimizda.tsx',
+      schema: [
+        {
+          '@type': 'AboutPage',
+          '@id': `${SITE.origin}/hakkimizda/#page`,
+          url: `${SITE.origin}/hakkimizda/`,
+          name: aboutTitle,
+          description: aboutDesc,
+          inLanguage: 'tr-TR',
+          isPartOf: { '@id': `${SITE.origin}/#website` },
+          about: { '@id': `${SITE.origin}/#business` },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Anasayfa', item: `${SITE.origin}/` },
+            { '@type': 'ListItem', position: 2, name: 'Hakkımızda', item: `${SITE.origin}/hakkimizda/` },
+          ],
+        },
+      ],
+    })
+  )
+);
+
+/* ------------------------------------------------------- contact */
+const contactTitle = 'İletişim & Adresimiz | M2 Dekorasyon Antalya – Telefon & Harita';
+const contactDesc =
+  'M2 Dekorasyon iletişim: Dutlubahçe, Muratpaşa/Antalya adresimiz, 0242 321 00 08, WhatsApp hattı ve harita konumu. Ücretsiz yerinde keşif randevusu alın.';
+
+written.push(
+  write(
+    'iletisim/index.html',
+    html({
+      path: '/iletisim/',
+      title: contactTitle,
+      description: contactDesc,
+      keywords: [
+        'm2 dekorasyon iletişim',
+        'm2 dekorasyon telefon',
+        'm2 dekorasyon antalya adres',
+        'dutlubahçe m2 dekorasyon',
+        'antalya gergi tavan iletişim',
+      ],
+      image: '/logo.png',
+      entry: '/src/entries/iletisim.tsx',
+      schema: [
+        {
+          '@type': 'ContactPage',
+          '@id': `${SITE.origin}/iletisim/#page`,
+          url: `${SITE.origin}/iletisim/`,
+          name: contactTitle,
+          description: contactDesc,
+          inLanguage: 'tr-TR',
+          isPartOf: { '@id': `${SITE.origin}/#website` },
+          about: { '@id': `${SITE.origin}/#business` },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Anasayfa', item: `${SITE.origin}/` },
+            { '@type': 'ListItem', position: 2, name: 'İletişim', item: `${SITE.origin}/iletisim/` },
+          ],
+        },
+      ],
+    })
+  )
+);
+
 /* ------------------------------------------------ sitemap + robots */
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${SITE.origin}/`, priority: '1.0', freq: 'weekly' },
   { loc: `${SITE.origin}/hizmetler/`, priority: '0.9', freq: 'monthly' },
+  { loc: `${SITE.origin}/projeler/`, priority: '0.9', freq: 'monthly' },
+  { loc: `${SITE.origin}${CATALOG.path}`, priority: '0.7', freq: 'yearly' },
+  { loc: `${SITE.origin}/hakkimizda/`, priority: '0.8', freq: 'monthly' },
+  { loc: `${SITE.origin}/iletisim/`, priority: '0.8', freq: 'monthly' },
   ...SERVICES.map((s) => ({
     loc: `${SITE.origin}/hizmetler/${s.slug}/`,
     priority: '0.8',
     freq: 'monthly',
   })),
 ];
+
 
 written.push(
   write(

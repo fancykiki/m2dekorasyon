@@ -41,43 +41,43 @@ const CONCURRENCY = 6;
 const BEATS = [
   {
     at: 0.0,
-    eyebrow: 'MEKÂN · 00',
-    headline: 'YÜZEY.\nIŞIK.\nMEKÂN.',
-    headlineM: 'YÜZEY\nIŞIK\nMEKÂN',
-    meta: 'INTERIOR 01 · ANTALYA',
-    metaM: 'INTERIOR 01',
+    eyebrow: 'MEKÂN // 00',
+    headline: 'HER METREKAREDE\nKUSURSUZ BİR\nMİMARİ RUH.',
+    headlineM: 'HER METREKAREDE\nKUSURSUZ\nMİMARİ RUH',
+    meta: 'MİMARİ YÜZEY & İÇ MEKAN TASARIMI · ANTALYA',
+    metaM: 'MİMARİ YÜZEY & TASARIM',
   },
   {
     at: 0.2,
-    eyebrow: 'TAVAN · 01',
-    headline: 'TAVAN,\nMİMARİYE\nDÖNÜŞÜR.',
-    headlineM: 'TAVAN\nMİMARİ\nOLUR',
-    meta: 'GERGİ TAVAN · EKSİZ SATEN MEMBRAN',
-    metaM: 'GERGİ TAVAN · EKSİZ MEMBRAN',
+    eyebrow: 'GERGİ TAVAN // 01',
+    headline: 'TAVAN,\nZAMANSIZ BİR\nSANATA DÖNÜŞÜR.',
+    headlineM: 'TAVAN\nZAMANSIZ BİR\nSANAT OLUR',
+    meta: 'EKSİZ AVRUPA SATEN MEMBRAN · PÜRÜZSÜZ DOKU',
+    metaM: 'EKSİZ AVRUPA MEMBRAN',
   },
   {
     at: 0.42,
-    eyebrow: 'IŞIK · 02',
-    headline: 'IŞIK,\nMEKÂNIN\nİÇİNDEN GEÇER.',
-    headlineM: 'IŞIK\nİÇERİDEN\nGEÇER',
-    meta: 'GİZLİ KANAL · 2700–4000K · CRI 90+',
-    metaM: '2700–4000K · CRI 90+',
+    eyebrow: 'AYDINLATMA // 02',
+    headline: 'IŞIK,\nMEKÂNA DERİNLİK\nVE BOYUT KATAR.',
+    headlineM: 'IŞIK MEKÂNA\nDERİNLİK VE\nBOYUT KATAR',
+    meta: 'GİZLİ LED KANALLARI · HOMOJEN IŞIK DİFÜZYONU',
+    metaM: 'GİZLİ LED KANALLARI',
   },
   {
     at: 0.62,
-    eyebrow: 'MALZEME · 03',
-    headline: 'MALZEME,\nIŞIĞI\nTUTAR.',
-    headlineM: 'MALZEME\nIŞIĞI\nTUTAR',
-    meta: 'MEŞE LATA · DOKULU DUVAR KAĞIDI',
-    metaM: 'MEŞE LATA · DUVAR KAĞIDI',
+    eyebrow: 'DUVAR KAĞIDI // 03',
+    headline: 'DOKULAR,\nYAŞAM ALANINA\nSICAKLIK VERİR.',
+    headlineM: 'DOKULAR\nYAŞAM ALANINA\nSICAKLIK VERİR',
+    meta: 'İTHAL DOKULU VİNİL · SİLİNEBİLİR YÜZEY',
+    metaM: 'İTHAL DOKULU VİNİL',
   },
   {
     at: 0.85,
-    eyebrow: 'İMZA · 04',
-    headline: 'TEK MEKÂN.\nTEK DİL.',
-    headlineM: 'TEK MEKÂN\nTEK DİL',
-    meta: 'GERGİ TAVAN · AYDINLATMA · DEKORASYON',
-    metaM: 'GERGİ TAVAN · AYDINLATMA',
+    eyebrow: 'İMZA // 04',
+    headline: 'FİKİRDEN GERÇEĞE,\nKUSURSUZ BİR\nMEKÂN DİLİ.',
+    headlineM: 'FİKİRDEN GERÇEĞE\nKUSURSUZ BİR\nMEKÂN DİLİ',
+    meta: 'GERGİ TAVAN · AYDINLATMA · DUVAR KAĞIDI',
+    metaM: 'BÜTÜNCÜL MİMARİ UYGULAMA',
   },
 ];
 
@@ -498,7 +498,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
         {!ready && (
           <div className="absolute inset-0 z-40 flex items-center justify-center bg-[#050505]">
             <div className="flex flex-col items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-[#F27D26] animate-pulse shadow-[0_0_12px_#F27D26]" />
+              <div className="w-2 h-2 rounded-full bg-[#E29415] animate-pulse shadow-[0_0_12px_#E29415]" />
               <span className="text-[10px] font-mono tracking-[0.35em] uppercase text-white/60">M2 · {loadPct}%</span>
             </div>
           </div>
@@ -516,21 +516,21 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
         <div className="absolute inset-0 z-30 flex items-end pb-32 sm:items-center sm:pb-0 pointer-events-none">
           <div className="w-full max-w-7xl mx-auto px-6 sm:px-12">
             <div key={activeBeat} className="hero-beat max-w-2xl">
-              <div className="text-[9px] sm:text-xs font-mono tracking-[0.35em] uppercase text-[#F27D26] mb-3 sm:mb-6">
+              <div className="text-[9px] sm:text-xs font-mono tracking-[0.35em] uppercase text-[#E29415] mb-3 sm:mb-6">
                 {beat.eyebrow}
               </div>
               <h1 className="text-[2.35rem] leading-[0.94] sm:text-6xl lg:text-7xl sm:leading-[0.92] font-black uppercase tracking-tighter text-white whitespace-pre-line drop-shadow-[0_6px_40px_rgba(0,0,0,0.92)]">
                 {mobile ? beat.headlineM : beat.headline}
               </h1>
               <div className="mt-4 sm:mt-7 flex items-center gap-2.5 sm:gap-3 text-[9px] sm:text-[11px] font-mono tracking-[0.14em] uppercase text-white/55">
-                <span className="w-5 sm:w-6 h-px bg-[#F27D26]" />
+                <span className="w-5 sm:w-6 h-px bg-[#E29415]" />
                 {mobile ? beat.metaM : beat.meta}
               </div>
 
               {isFinal && (
                 <button
                   onClick={onScrollToExplore}
-                  className="hero-beat mt-7 sm:mt-11 pointer-events-auto inline-flex items-center gap-3 px-6 py-3.5 sm:px-7 rounded-full bg-[#F27D26] text-black font-bold uppercase tracking-widest text-[11px] sm:text-xs active:scale-95 sm:hover:bg-white transition-all"
+                  className="hero-beat mt-7 sm:mt-11 pointer-events-auto inline-flex items-center gap-3 px-6 py-3.5 sm:px-7 rounded-full bg-[#E29415] text-black font-bold uppercase tracking-widest text-[11px] sm:text-xs active:scale-95 hover:bg-[#F5A623] transition-all shadow-md"
                 >
                   <span>PROJELERİ KEŞFET</span>
                   <ArrowDown size={15} />
@@ -544,7 +544,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
         <footer className="absolute bottom-0 inset-x-0 z-30 px-6 sm:px-12 pb-[calc(env(safe-area-inset-bottom)+2.5rem)] sm:pb-9">
           <div className="max-w-7xl mx-auto">
             <div className="relative h-px w-full bg-white/15">
-              <div ref={barRef} className="absolute left-0 top-0 h-px bg-[#F27D26]" style={{ width: '0%' }} />
+              <div ref={barRef} className="absolute left-0 top-0 h-px bg-[#E29415]" style={{ width: '0%' }} />
               {BEATS.map((b, i) => (
                 <button
                   key={i}
@@ -555,8 +555,8 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
                 >
                   <span
                     className={`block w-1.5 h-1.5 rounded-full transition-colors ${
-                      i === activeBeat ? 'bg-[#F27D26]' : i < activeBeat ? 'bg-white/70' : 'bg-white/30'
-                    } sm:group-hover:bg-[#F27D26]`}
+                      i === activeBeat ? 'bg-[#E29415]' : i < activeBeat ? 'bg-white/70' : 'bg-white/30'
+                    } sm:group-hover:bg-[#E29415]`}
                   />
                 </button>
               ))}
@@ -565,7 +565,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
               <button
                 onClick={() => setIsPlaying((v) => !v)}
                 className={`flex items-center gap-2 py-1 transition-colors ${
-                  isPlaying ? 'text-[#F27D26]' : 'text-white/60 sm:hover:text-white'
+                  isPlaying ? 'text-[#E29415]' : 'text-white/60 sm:hover:text-white'
                 }`}
                 aria-label={isPlaying ? 'Durdur' : 'Oynat'}
               >
@@ -574,7 +574,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
               </button>
               <span className="w-px h-3 bg-white/15" />
               <span className="text-white/40">
-                <span className="text-[#F27D26]">{beat.eyebrow}</span>
+                <span className="text-[#E29415]">{beat.eyebrow}</span>
                 <span ref={counterRef} className="hidden sm:inline" />
               </span>
             </div>

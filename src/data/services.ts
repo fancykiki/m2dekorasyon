@@ -18,18 +18,36 @@ export const SITE = {
   name: 'M2 Dekorasyon',
   legalName: 'M2 Dekorasyon',
   origin: 'https://m2dekorasyon.com',
-  phone: '+902423162020',
-  phoneDisplay: '+90 242 316 20 20',
-  whatsapp: '905320000000',
-  email: 'proje@m2dekorasyon.com',
-  street: 'Şirinyalı Mah. İsmet Gökşen Cad. No: 42/B',
+  logo: '/logo.png',
+  phone: '+902423210008',
+  phoneDisplay: '0242 321 00 08',
+  whatsapp: '905305408567',
+  whatsappDisplay: '0530 540 85 67',
+  email: 'info@m2dekorasyon.com',
+  street: 'Dutlubahçe, Fatih Cd. 62 B',
   district: 'Muratpaşa',
   city: 'Antalya',
-  postalCode: '07160',
-  lat: 36.8841,
-  lng: 30.7056,
-  openingHours: 'Pazartesi – Cumartesi 09:00 – 19:00',
+  postalCode: '07010',
+  lat: 36.909653,
+  lng: 30.698736,
+  hours: '09:00 – 19:00',
+  openingHours: 'Her gün 09:00 – 19:00',
+  maps: 'https://maps.app.goo.gl/8iiczBEtzGhHbKRE9',
+  instagram: 'https://www.instagram.com/m2dekorasyon/',
+  facebook: 'https://www.facebook.com/metrekaredekorasyon/',
 } as const;
+
+/** Everywhere we link to the catalogue flipbook. */
+export const CATALOG = {
+  path: '/katalog/',
+  pdfPath: '/m2dekorasyon.pdf',
+  title: 'Desen Kataloğu',
+  pages: 45,
+} as const;
+
+/** Prefilled WhatsApp link. */
+export const waLink = (text: string) =>
+  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
 
 /** Districts we actively serve — used for areaServed schema and local copy. */
 export const SERVICE_AREAS = [
@@ -177,75 +195,76 @@ export const SERVICES: ServicePage[] = [
     slug: 'duvar-kagidi',
     number: '02',
     nav: 'Duvar Kağıdı',
-    h1: 'Antalya Duvar Kağıdı Uygulama',
-    seoTitle: 'Antalya Duvar Kağıdı Uygulama | M2 Dekorasyon',
+    h1: 'Antalya Duvar Kağıdı Satış ve Uygulama',
+    seoTitle: 'Antalya Duvar Kağıdı Satış ve Uygulama | M2 Dekorasyon',
     seoDescription:
-      'Antalya duvar kağıdı satış ve uygulama: ithal vinil, tekstil, 3D panel ve duvar posteri. Yüzey hazırlığı dahil profesyonel işçilik, ücretsiz keşif ve ölçü.',
+      'Antalya duvar kağıdı uygulama: silinebilir vinil ve kaliteli ithal duvar kağıtları. Temiz zemin hazırlığı, milimetrik işçilik ve yerinde katalogla ücretsiz keşif.',
     keywords: [
       'antalya duvar kağıdı',
       'duvar kağıdı antalya',
-      'duvar kağıdı uygulama antalya',
-      'ithal duvar kağıdı',
-      '3d duvar paneli antalya',
+      'duvar kağıdı ustası antalya',
+      'silinebilir duvar kağıdı',
+      'ithal duvar kağıdı antalya',
+      'muratpaşa duvar kağıdı',
       'konyaaltı duvar kağıdı',
     ],
-    tagline: 'Doğru yüzey hazırlığıyla yıllarca kalkmayan duvarlar',
+    tagline: 'Silinebilir kaliteli modeller, temiz yüzey hazırlığı ve dikişsiz uygulama',
     intro:
-      'Duvar kağıdı, bir odanın karakterini en hızlı değiştiren dekorasyon kalemidir. Ancak sonucu belirleyen şey çoğu zaman kağıdın kendisi değil, altındaki yüzeyin hazırlanma biçimidir. M2 Dekorasyon olarak Antalya’da duvar kağıdı seçiminden yüzey hazırlığına ve uygulamaya kadar tüm süreci tek elden yürütüyoruz.',
-    heroImage: '/hero-seq/frame-0072.webp',
-    gallery: ['/hero-seq/frame-0066.webp', '/hero-seq/frame-0086.webp'],
+      'Duvar kağıdı, evinize ferahlık ve şıklık katmanın en pratik yoludur. M2 Dekorasyon olarak yüzlerce model içeren güncel desen kataloglarımızla adresinize geliyor, mekanınıza en uygun modeli birlikte seçiyoruz. Eski kağıdın sökümünden pürüzsüz zemin hazırlığına ve temiz montaja kadar her şeyi titizlikle yapıyoruz.',
+    heroImage: '/duvar-kagidi-katalog/page-002.webp',
+    gallery: ['/duvar-kagidi-katalog/page-003.webp', '/duvar-kagidi-katalog/page-004.webp'],
     blocks: [
       {
-        heading: 'Duvar kağıdı çeşitleri ve nerede kullanılır?',
+        heading: 'Zengin Desen ve Model Seçenekleri',
         body:
-          'Her mekânın nem, ışık ve kullanım yoğunluğu farklıdır. Ürünü buna göre seçmek, duvar kağıdının ömrünü doğrudan belirler.',
+          'Mekanınızın ışığına ve mobilyalarınıza en uygun desenleri geniş kataloğumuzdan seçebilirsiniz. Tüm modellerimiz kaliteli, uzun ömürlü ve temizliği kolay ürünlerdir.',
         bullets: [
-          'Vinil (silinebilir) — koridor, çocuk odası ve mutfak girişi gibi temas yoğun alanlar için.',
-          'Tekstil ve keten dokulu — salon ve yatak odasında sıcak, mat bir yüzey verir.',
-          'Non-woven (kağıt tabanlı) — uygulaması kolay, sökerken duvarı yormaz.',
-          'Duvar posteri ve dijital baskı — ölçüye özel tek parça görsel; TV duvarı ve yatak başı için.',
-          '3D panel ve ahşap lata — duvara derinlik ve gölge katar, gergi tavanla birlikte çok iyi çalışır.',
+          'Silinebilir vinil modeller — Nemli bezle kolayca temizlenir, leke ve parmak izi tutmaz.',
+          'Dokulu ve keten efektli modeller — Salon ve yatak odalarında sıcak, şık bir hava yaratır.',
+          'Doğal taş ve mermer desenleri — TV ünitesi arkasında ve antrelerde modern derinlik katar.',
+          'Özel manzara ve 3D derinlikli görseller — Odanızı olduğundan daha ferah ve canlı gösterir.',
         ],
       },
       {
-        heading: 'Yüzey hazırlığı: işin yüzde yetmişi',
+        heading: 'Temiz Zemin Hazırlığı ve Kusursuz İşçilik',
         body:
-          'Eski kağıdın sökülmesi, çatlakların dolgusu, saten alçı raspası, astar ve nem kontrolü yapılmadan uygulanan hiçbir duvar kağıdı uzun ömürlü olmaz. Ekiplerimiz duvarı önce tesviye ediyor, gerektiğinde nem yalıtımı uyguluyor ve ancak ondan sonra kağıda geçiyor. Ek yerlerini ışık yönüne göre planlıyoruz; desenli ürünlerde raport eşleşmesini uygulama öncesi kontrol ediyoruz.',
+          'Duvar kağıdının uzun yıllar boyunca kabarmadan, açılma yapmadan durması için alt zemin çok önemlidir. Uygulama öncesinde duvardaki pürüzleri gideriyor, gerekiyorsa alçı dolgusunu ve astarını çekiyoruz. Desenleri milimetrik olarak birbirine denk getiriyor ve ek yerlerini kesinlikle belli etmeyecek şekilde uyguluyoruz.',
       },
       {
-        heading: 'Kombinasyon önerileri',
+        heading: 'Yerinde Katalogla Ücretsiz Keşif',
         body:
-          'Duvar kağıdını tek başına değil, tavan ve aydınlatmayla birlikte kurgulamak gerekir. Dokulu bir duvar kağıdını yıkayan gizli LED bandı, dokuyu ortaya çıkarır; mat gergi tavan ise duvarın rengini bozmadan nötr bir üst yüzey sağlar. Bu nedenle duvar kağıdı işlerimizi çoğu zaman gergi tavanla birlikte planlıyoruz.',
+          'Fotoğraftan veya ekrandan duvar kağıdı seçmek her zaman doğru rengi vermez. Bize ulaştığınızda ustalarımız en beğenilen desen kataloglarıyla evinize gelir; hem net ölçünüzü alır hem de renkleri kendi mobilyalarınızın yanında canlı olarak görmenizi sağlar.',
       },
     ],
     features: [
-      'İthal ve yerli ürün seçkisi',
-      'Yüzey hazırlığı ve astar dahil',
-      'Ölçüye özel dijital baskı',
-      'Raport eşleşmesi ve ek yeri planlaması',
+      '130 sayfalık güncel desen kataloğu',
+      'Silinebilir, leke tutmayan kaliteli kağıtlar',
+      'Eski kağıt sökümü ve pürüzsüz zemin hazırlığı',
+      'Ek yeri belli olmayan milimetrik desen eşleme',
+      'Antalya geneli yerinde katalogla ücretsiz keşif',
     ],
     specs: [
-      { label: 'Ürün tipleri', value: 'Vinil, non-woven, tekstil, cam elyaf, dijital baskı' },
-      { label: 'Hazırlık', value: 'Raspa, çatlak dolgu, saten alçı, astar' },
-      { label: 'Uygulama', value: 'Ek yeri ışık yönüne göre, raport kontrollü' },
-      { label: 'Ek hizmet', value: 'Ahşap lata ve 3D panel montajı' },
+      { label: 'Modeller', value: 'Silinebilir vinil, dokulu kumaş efektli, 3D derinlikli modeller' },
+      { label: 'Hazırlık', value: 'Eski kağıt sökümü, pürüz giderme, saten alçı ve astar' },
+      { label: 'Uygulama', value: 'Dikişsiz ek yeri, desen raport kontrollü temiz montaj' },
+      { label: 'Keşif', value: 'Antalya geneli yerinde katalogla ücretsiz' },
     ],
     faq: [
       {
-        q: 'Duvar kağıdı Antalya’nın neminde kalkar mı?',
-        a: 'Doğru astar ve nefes alan yapıştırıcıyla kalkmaz. Dış duvara bakan ve nem riski olan yüzeylerde önce nem kaynağını çözüyor, gerekirse yalıtım uyguluyoruz.',
+        q: 'Duvar kağıdı nemden veya sıcaktan kalkar mı?',
+        a: 'Kullandığımız kaliteli vinil modeller ve doğru astar uygulaması sayesinde Antalya’nın sıcağında ve neminde kabarma veya kalkma yapmaz.',
       },
       {
-        q: 'Eski duvar kağıdının üzerine uygulanabilir mi?',
-        a: 'Önermiyoruz. Eski kağıt zamanla altta kabarır ve yeni yüzeyi bozar. Sökme ve yüzey hazırlığı fiyata dahildir.',
+        q: 'Eski duvar kağıdının üzerine yeni kağıt yapılır mı?',
+        a: 'En temiz ve uzun ömürlü sonuç için eski kağıdın sökülüp alt zeminin düzeltilmesini öneriyoruz. Bu hazırlığı temiz ve tozsuz bir şekilde biz yapıyoruz.',
       },
       {
-        q: 'Bir oda ne kadar sürede bitiyor?',
-        a: 'Yüzey durumuna göre değişir. Hazır bir duvarda tek oda genelde bir gün; raspa ve alçı gerekiyorsa kuruma süresiyle birlikte iki-üç gün sürer.',
+        q: 'Bir odanın yapılması ne kadar sürer?',
+        a: 'Zemini hazır olan standart bir oda genellikle 1 günde tamamen bitirilip temiz bir şekilde teslim edilir.',
       },
       {
-        q: 'Kendi görselimi bastırabilir miyim?',
-        a: 'Evet. Yeterli çözünürlükteki görselleri duvar ölçünüze göre tek parça olarak bastırıyor ve ek yeri en aza indirecek şekilde uyguluyoruz.',
+        q: 'Katalogları evimizde canlı inceleyebilir miyiz?',
+        a: 'Evet. Bizi aradığınızda ustamız desen kataloglarıyla evinize gelir, hem ölçü alır hem de desenleri mobilyalarınızın yanında görmenizi sağlar.',
       },
     ],
     relatedSlugs: ['gergi-tavan', 'mutfak-dekorasyon', 'mimari-projelendirme-uygulama'],
@@ -271,11 +290,10 @@ export const SERVICES: ServicePage[] = [
     tagline: 'Ergonomi, depolama ve doğru aydınlatmayla kurulan mutfaklar',
     intro:
       'Mutfak yenilemede en sık yapılan hata, işe dolap seçerek başlamaktır. Oysa önce çalışma üçgeni, depolama ihtiyacı ve tesisatın konumu çözülmelidir. M2 Dekorasyon olarak Antalya’da mutfakları önce planlıyor, sonra üretiyoruz; sonuç hem daha kullanışlı hem de daha uzun ömürlü oluyor.',
-    heroImage:
-      'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1600&q=85',
+    heroImage: '/services-gallery/mutfak/img-001.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=82',
-      'https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=82',
+      '/services-gallery/mutfak/img-002.webp',
+      '/services-gallery/mutfak/img-003.webp',
     ],
     blocks: [
       {
@@ -354,11 +372,10 @@ export const SERVICES: ServicePage[] = [
     tagline: 'Su yalıtımından aydınlatmaya kadar doğru sırayla yenilenen banyolar',
     intro:
       'Banyo, evin en küçük ama en çok detay barındıran odasıdır. Yanlış eğim, eksik yalıtım veya yetersiz havalandırma birkaç yıl içinde kendini gösterir. M2 Dekorasyon olarak Antalya’da banyo yenilemeyi görünen malzemeden değil, altındaki yalıtımdan başlayarak kurguluyoruz.',
-    heroImage:
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1600&q=85',
+    heroImage: '/services-gallery/banyo/img-001.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=82',
-      'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=82',
+      '/services-gallery/banyo/img-002.webp',
+      '/services-gallery/banyo/img-003.webp',
     ],
     blocks: [
       {
@@ -437,11 +454,10 @@ export const SERVICES: ServicePage[] = [
     tagline: 'Rölöveden şantiye teslimine tek muhatap',
     intro:
       'Bir tadilatın maliyetini ve süresini belirleyen şey, işe başlamadan önce ne kadarının çözüldüğüdür. M2 Dekorasyon olarak Antalya’da konut, villa ve ticari mekânlar için önce projeyi bitiriyor, sonra uyguluyoruz. Böylece şantiye sırasında sürpriz karar alınmıyor, bütçe kontrolden çıkmıyor.',
-    heroImage:
-      'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1600&q=85',
+    heroImage: '/projeler/proje-1/01.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=82',
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=82',
+      '/projeler/proje-1/02.jpg',
+      '/projeler/proje-2/01.jpg',
     ],
     blocks: [
       {

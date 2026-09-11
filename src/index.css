@@ -19,19 +19,25 @@ html.lenis body {
   :root {
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-tech: 'Space Grotesk', monospace;
-    --bg-dark: #050505;
-    --bg-surface: #111111;
-    --bg-surface-elevated: #161616;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-faint: rgba(255, 255, 255, 0.05);
+    --bg-canvas: #F8F6F0;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #EFECE4;
+    --bg-surface-elevated: #FFFFFF;
+    --border-subtle: rgba(20, 21, 23, 0.08);
+    --border-faint: rgba(20, 21, 23, 0.04);
+    --text-primary: #141517;
+    --text-secondary: #66686F;
+    --text-muted: #91949D;
     --gold-accent: #c8a97e;
-    --tech-orange: #F27D26;
+    --tech-orange: #E29415;
+    --accent-amber: #E29415;
+    --accent-amber-light: #F5A623;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #050505;
-    color: #F5F5F5;
+    background-color: #F8F6F0;
+    color: #141517;
     overflow-x: hidden;
   }
 
@@ -46,22 +52,22 @@ html.lenis body {
 
 /* Sophisticated Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #F8F6F0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #222222;
-  border-radius: 0px;
+  background: #D1CDC4;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #444444;
+  background: #B5B0A6;
 }
 
 /* Subtle architectural grain */
 .bg-grain {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-image: radial-gradient(rgba(20, 21, 23, 0.035) 1px, transparent 0);
   background-size: 32px 32px;
 }
 
@@ -69,17 +75,21 @@ html.lenis body {
 .arch-grid-pattern {
   background-size: 80px 80px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(20, 21, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 21, 23, 0.04) 1px, transparent 1px);
 }
 
-/* Sophisticated Dark Glow and Technical Accents */
-.glow-orange {
-  box-shadow: 0 0 20px rgba(242, 125, 38, 0.4);
+/* Sophisticated Light Glow and Technical Accents */
+.glow-orange, .glow-amber {
+  box-shadow: 0 0 24px rgba(226, 148, 21, 0.35);
+}
+
+.glow-card {
+  box-shadow: 0 20px 40px -15px rgba(20, 21, 23, 0.06);
 }
 
 .glow-soft-white {
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.04);
 }
 
 /* Smooth transition helpers */
@@ -90,5 +100,6 @@ html.lenis body {
 .vertical-rl {
   writing-mode: vertical-rl;
 }
+
 
 

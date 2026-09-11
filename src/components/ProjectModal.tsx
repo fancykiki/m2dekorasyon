@@ -1,154 +1,181 @@
-import React from 'react';
-import { Project } from '../types';
-import { X, MapPin, Calendar, Maximize2, Check, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ProjectItem } from '../data/projectsData';
+import { X, ChevronLeft, ChevronRight, MapPin, MessageCircle, Camera } from 'lucide-react';
+import { waLink } from '../data/services';
 
 interface ProjectModalProps {
-  project: Project | null;
+  project: ProjectItem | null;
   onClose: () => void;
+  initialImageIndex?: number;
 }
 
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+export const ProjectModal: React.FC<ProjectModalProps> = ({
+  project,
+  onClose,
+  initialImageIndex = 0,
+}) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(initialImageIndex);
+
+  // Sync index if initial changes or project changes
+  useEffect(() => {
+    setCurrentIndex(initialImageIndex);
+  }, [project, initialImageIndex]);
+
+  // Keyboard navigation: Escape closes, ArrowLeft/Right changes active photo
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (!project) return;
+      if (e.key === 'Escape') {
+        onClose();
+      } else if (e.key === 'ArrowRight') {
+        setCurrentIndex((prev) => (prev + 1) % project.images.length);
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentIndex((prev) => (prev - 1 + project.images.length) % project.images.length);
+      }
+    },
+    [project, onClose]
+  );
+
+  useEffect(() => {
+    if (!project) return;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [project, handleKeyDown]);
+
   if (!project) return null;
 
+  const currentImg = project.images[currentIndex] || project.coverImage;
+  const totalCount = project.images.length;
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + totalCount) % totalCount);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % totalCount);
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-xl animate-fade-in overflow-y-auto">
-      <div className="relative w-full max-w-5xl bg-[#0a0a0a] border border-white/10 my-auto overflow-hidden shadow-2xl rounded-xs">
-        
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 z-20 p-2.5 bg-[#050505]/80 hover:bg-white text-white hover:text-black border border-white/20 transition-all cursor-pointer"
-          aria-label="Kapat"
-        >
-          <X className="w-4 h-4" />
-        </button>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/95 backdrop-blur-2xl animate-fade-in select-none"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-6xl max-h-[96vh] flex flex-col bg-[#0b0c0d] border border-white/10 rounded-sm shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Top Header Bar */}
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-[#141517]">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <span className="font-mono text-xs sm:text-sm font-semibold text-white tracking-widest uppercase">
+              {project.code || project.title}
+            </span>
+            <span className="text-white/20">/</span>
+            <span className="flex items-center space-x-1 text-[11px] font-mono text-[#E29415] font-semibold">
+              <MapPin className="w-3 h-3" />
+              <span>{project.location}</span>
+            </span>
+            <span className="text-white/20 hidden sm:inline">/</span>
+            <span className="hidden sm:flex items-center space-x-1.5 text-[11px] font-mono text-white/50">
+              <Camera className="w-3 h-3" />
+              <span>{totalCount} Fotoğraf</span>
+            </span>
+          </div>
 
-        {/* Hero Cover of Project */}
-        <div className="relative h-72 sm:h-96 md:h-[420px] w-full overflow-hidden">
-          <img
-            src={project.coverImage}
-            alt={project.title}
-            referrerPolicy="no-referrer"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover filter brightness-90"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/50" />
-
-          <div className="absolute bottom-6 left-6 md:left-10 right-6">
-            <div className="flex items-center space-x-3 text-[10px] font-mono text-[#F27D26] tracking-widest uppercase mb-2">
-              <span className="px-2 py-0.5 bg-white/5 border border-white/15 text-white">
-                {project.category}
-              </span>
-              <span className="text-white/20">/</span>
-              <span className="flex items-center space-x-1 text-white/70">
-                <MapPin className="w-3 h-3 text-[#F27D26]" />
-                <span>{project.location}</span>
-              </span>
-              <span className="text-white/20">/</span>
-              <span className="text-white/70">{project.year}</span>
-            </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl text-white font-medium uppercase tracking-tight">
-              {project.title}
-            </h3>
-            <p className="text-xs md:text-sm text-white/50 font-mono mt-1">
-              {project.subtitle}
-            </p>
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <span className="font-mono text-xs text-white/70 bg-white/10 px-2.5 py-1 border border-white/15 rounded-xs">
+              {currentIndex + 1} / {totalCount}
+            </span>
+            <button
+              onClick={onClose}
+              className="p-2 bg-white/10 hover:bg-[#E29415] text-white hover:text-white border border-white/15 transition-colors cursor-pointer rounded-xs"
+              aria-label="Kapat"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        {/* Content Body */}
-        <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-8">
-          
-          {/* Left: Project Story & Highlights */}
-          <div className="md:col-span-8 space-y-6">
-            <div>
-              <span className="text-[10px] font-mono text-[#F27D26] tracking-widest uppercase block mb-2">
-                PROJE HİKAYESİ
-              </span>
-              <p className="text-white/70 leading-relaxed text-sm font-light">
-                {project.description}
-              </p>
-            </div>
+        {/* Main Image Stage */}
+        <div className="relative flex-1 min-h-[300px] sm:min-h-[420px] md:min-h-[520px] flex items-center justify-center bg-black overflow-hidden group">
+          <img
+            key={currentImg}
+            src={currentImg}
+            alt={`${project.title} - ${currentIndex + 1}`}
+            className="max-h-[65vh] w-auto max-w-full object-contain mx-auto transition-opacity duration-300"
+            loading="eager"
+            decoding="async"
+          />
 
-            <div>
-              <span className="text-[10px] font-mono text-[#F27D26] tracking-widest uppercase block mb-3">
-                ÖNE ÇIKAN MİMARİ MÜDAHALELER
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {project.highlights.map((h, i) => (
-                  <div key={i} className="flex items-start space-x-2 text-xs font-mono text-white/80 bg-white/5 p-3 border border-white/5">
-                    <Check className="w-3.5 h-3.5 text-[#F27D26] shrink-0 mt-0.5" />
-                    <span>{h}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Previous / Next Arrow Controls */}
+          {totalCount > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 bg-black/60 hover:bg-[#E29415] text-white hover:text-white border border-white/15 backdrop-blur-md rounded-full transition-all cursor-pointer shadow-xl z-10"
+                aria-label="Önceki Fotoğraf"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
 
-            {/* Gallery Strip */}
-            <div>
-              <span className="text-[10px] font-mono text-white/40 tracking-widest uppercase block mb-3">
-                PROJE DETAY FOTOĞRAFLARI
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                {project.gallery.map((img, i) => (
-                  <div key={i} className="aspect-[4/3] bg-black/40 overflow-hidden border border-white/10 group">
+              <button
+                onClick={handleNext}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 bg-black/60 hover:bg-[#E29415] text-white hover:text-white border border-white/15 backdrop-blur-md rounded-full transition-all cursor-pointer shadow-xl z-10"
+                aria-label="Sonraki Fotoğraf"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </>
+          )}
+
+          {/* Bottom Overlay Info & WhatsApp Action */}
+          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 flex items-center space-x-2 z-10">
+            <a
+              href={waLink(`Merhaba M2 Dekorasyon, web sitenizdeki ${project.title} projesi hakkında bilgi almak istiyorum.`)}
+              target="_blank"
+              rel="noreferrer"
+              className="px-3 py-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-mono font-semibold rounded-xs backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-lg cursor-pointer"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>Bu Proje Hakkında Bilgi Al</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Thumbnail Filmstrip */}
+        {totalCount > 1 && (
+          <div className="p-2 sm:p-3 bg-[#0c0d0e] border-t border-white/10 overflow-x-auto scrollbar-thin">
+            <div className="flex space-x-2 w-max mx-auto py-1">
+              {project.images.map((img, idx) => {
+                const isActive = idx === currentIndex;
+                return (
+                  <button
+                    key={img}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`relative w-14 h-10 sm:w-16 sm:h-12 flex-shrink-0 overflow-hidden rounded-xs border transition-all cursor-pointer ${
+                      isActive
+                        ? 'border-[#E29415] ring-2 ring-[#E29415] opacity-100 scale-105'
+                        : 'border-white/10 opacity-50 hover:opacity-90'
+                    }`}
+                  >
                     <img
                       src={img}
-                      alt={`${project.title} detail ${i + 1}`}
-                      referrerPolicy="no-referrer"
+                      alt={`Thumb ${idx + 1}`}
+                      className="w-full h-full object-cover"
                       loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                  </div>
-                ))}
-              </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
-
-          {/* Right: Technical Specifications Card */}
-          <div className="md:col-span-4 bg-[#121212] border border-white/5 p-6 flex flex-col justify-between rounded-xs">
-            <div>
-              <span className="text-[10px] font-mono text-[#F27D26] tracking-widest uppercase block mb-4 border-b border-white/10 pb-2">
-                TEKNİK KÜNYE
-              </span>
-              <dl className="space-y-3.5 text-xs">
-                <div className="flex justify-between border-b border-white/5 pb-2">
-                  <dt className="text-white/40 font-mono">Alan</dt>
-                  <dd className="text-white font-mono">{project.area}</dd>
-                </div>
-                <div className="flex justify-between border-b border-white/5 pb-2">
-                  <dt className="text-white/40 font-mono">Konum</dt>
-                  <dd className="text-white font-mono">{project.location}</dd>
-                </div>
-                <div className="flex justify-between border-b border-white/5 pb-2">
-                  <dt className="text-white/40 font-mono">Yıl</dt>
-                  <dd className="text-white font-mono">{project.year}</dd>
-                </div>
-                {project.specs.map((s, i) => (
-                  <div key={i} className="flex justify-between border-b border-white/5 pb-2">
-                    <dt className="text-white/40 font-mono">{s.label}</dt>
-                    <dd className="text-white font-mono text-right ml-2">{s.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-white/5">
-              <a
-                href="#contact"
-                onClick={onClose}
-                className="w-full py-3.5 bg-white hover:bg-[#e0e0e0] text-black text-center font-mono text-xs tracking-wider uppercase font-semibold flex items-center justify-center space-x-2 transition-colors block"
-              >
-                <span>BENZER PROJE BAŞLAT</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-
-        </div>
-
+        )}
       </div>
     </div>
   );
