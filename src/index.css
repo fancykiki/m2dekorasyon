@@ -17,7 +17,6 @@ html.lenis body {
 
 @layer base {
   :root {
-    --font-serif: 'Cinzel', serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-tech: 'Space Grotesk', monospace;
     --bg-dark: #050505;

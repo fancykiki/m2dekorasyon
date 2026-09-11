@@ -6,6 +6,12 @@
       "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "m2dekorasyon-preview",
+      "runtimeExecutable": "bunx",
+      "runtimeArgs": ["vite", "preview", "--port", "4173", "--host", "0.0.0.0"],
+      "port": 4173
     }
   ]
 }

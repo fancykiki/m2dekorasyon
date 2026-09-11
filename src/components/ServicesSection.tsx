@@ -100,6 +100,8 @@ export const ServicesSection: React.FC = () => {
                 src={activeService.image}
                 alt={activeService.title}
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-all duration-700 filter brightness-90 contrast-105 group-hover:scale-105"
               />
 

@@ -58,6 +58,8 @@ export const TransformationSlider: React.FC = () => {
               src="/sequence/after.webp"
               alt="M2 Dekorasyon Tamamlanmış Lüks İç Mimarlık"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
             <div className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-[#050505]/80 backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 border border-white/10 text-[9px] sm:text-[10px] font-mono text-white flex items-center space-x-1.5 sm:space-x-2">
@@ -85,6 +87,8 @@ export const TransformationSlider: React.FC = () => {
                 src="/sequence/before.webp"
                 alt="Aydınlatma Öncesi Ham Mimari Mekan"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
 

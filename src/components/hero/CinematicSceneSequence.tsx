@@ -15,9 +15,28 @@ interface CinematicSceneSequenceProps {
  * Desktop and mobile share the story but not the composition: mobile loads a
  * lighter, portrait-cropped frame set (public/hero-seq-m), a shorter scroll
  * distance, and its own typography.
+ *
+ * Performance contract (visual output is identical to the un-optimised version):
+ *  - the canvas is repainted only when the frame index, the drawn image or the
+ *    canvas size actually changes; a still hero costs nothing
+ *  - the rAF loop is parked while the hero is off-screen or the tab is hidden
+ *  - continuous values (progress bar, frame counter) are written straight to
+ *    the DOM; React state only changes when the beat changes (5x per journey)
+ *  - frames stream in coverage passes (stride 8 -> 4 -> 2 -> 1) with bounded
+ *    concurrency, always preferring frames near the current scroll position
+ *  - decoded frames are held in a bounded cache and the furthest ones are
+ *    released, so long scrolls do not grow memory without limit
  */
-const DESKTOP = { dir: '/hero-seq/', count: 132, priority: 24 };
-const MOBILE = { dir: '/hero-seq-m/', count: 96, priority: 16 };
+/**
+ * `window` = how many frames each side of the current one are kept decoded.
+ * `cache`  = hard ceiling on decoded frames held at once.
+ * Every ANCHOR_STRIDE-th frame is permanently resident, so the whole timeline
+ * always has something within 4 frames to show while detail streams in.
+ */
+const DESKTOP = { dir: '/hero-seq/', count: 132, window: 20, cache: 58 };
+const MOBILE = { dir: '/hero-seq-m/', count: 96, window: 12, cache: 34 };
+const ANCHOR_STRIDE = 8;
+const CONCURRENCY = 6;
 
 const BEATS = [
   {
@@ -78,105 +97,224 @@ const useMediaQuery = (query: string) => {
 export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ onScrollToExplore }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLSpanElement>(null);
 
   const mobile = useMediaQuery('(max-width: 767px)');
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
   const cfg = mobile ? MOBILE : DESKTOP;
 
-  const [progress, setProgress] = useState(0);
+  // React state is only for values that change a handful of times.
+  const [activeBeat, setActiveBeat] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [readyCount, setReadyCount] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [loadPct, setLoadPct] = useState(0);
 
   const targetRef = useRef(0);
   const currentRef = useRef(0);
-  const reportedRef = useRef(-1);
   const rafRef = useRef<number | null>(null);
+  const runningRef = useRef(false);
+  const onScreenRef = useRef(false);
+  const playingRef = useRef(false);
+  const beatRef = useRef(0);
+  const barPctRef = useRef('');
+  const counterFrameRef = useRef(-1);
+  const wakeRef = useRef<() => void>(() => {});
+
+  // frame cache + bookkeeping
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
+  const loadedCountRef = useRef(0);
+  const frameIndexRef = useRef(0);
+  const drawnFrameRef = useRef(-1);
+  const drawnImgRef = useRef<HTMLImageElement | null>(null);
+  const sizeDirtyRef = useRef(true);
+  const cssSizeRef = useRef({ w: 0, h: 0, dpr: 1 });
 
   const frames = useMemo(
     () => Array.from({ length: cfg.count }, (_, i) => `${cfg.dir}frame-${String(i + 1).padStart(4, '0')}.webp`),
     [cfg.dir, cfg.count]
   );
 
-  // Preload the active set: priority batch first so the film shows fast,
-  // then stream the tail without competing with interaction.
+  /* ------------------------------------------------------------------ *
+   * Streaming loader: reveal on frame 1, then coverage passes, always
+   * preferring whatever is closest to where the user currently is.
+   * ------------------------------------------------------------------ */
   useEffect(() => {
     let cancelled = false;
-    imagesRef.current = new Array(frames.length).fill(null);
-    setReadyCount(0);
-    let done = 0;
-    const bump = () => {
-      if (!cancelled) setReadyCount((done += 1));
+    const total = frames.length;
+    const imgs: (HTMLImageElement | null)[] = new Array(total).fill(null);
+    imagesRef.current = imgs;
+    loadedCountRef.current = 0;
+    drawnFrameRef.current = -1;
+    drawnImgRef.current = null;
+    setReady(false);
+    setLoadPct(0);
+
+    const pending = new Set<number>();
+    const isAnchor = (i: number) => i % ANCHOR_STRIDE === 0 || i === total - 1;
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    // Drop the least useful decoded frames once the ceiling is reached: only
+    // non-anchor frames outside the live window, furthest from the camera first.
+    const evictIfNeeded = () => {
+      while (loadedCountRef.current > cfg.cache) {
+        const here = frameIndexRef.current;
+        let victim = -1;
+        let worst = cfg.window;
+        for (let i = 0; i < total; i++) {
+          if (!imgs[i] || pending.has(i) || isAnchor(i)) continue;
+          const d = Math.abs(i - here);
+          if (d > worst) {
+            worst = d;
+            victim = i;
+          }
+        }
+        if (victim < 0) return; // everything resident is worth keeping
+        const img = imgs[victim];
+        imgs[victim] = null;
+        loadedCountRef.current--;
+        if (img) img.src = '';
+      }
     };
+
     const load = (i: number) =>
       new Promise<void>((resolve) => {
+        if (cancelled || imgs[i] || pending.has(i)) return resolve();
+        pending.add(i);
         const img = new Image();
         img.decoding = 'async';
-        img.onload = () => {
-          imagesRef.current[i] = img;
-          bump();
+        const done = (ok: boolean) => {
+          pending.delete(i);
+          if (!cancelled && ok) {
+            imgs[i] = img;
+            loadedCountRef.current++;
+            evictIfNeeded();
+          }
           resolve();
         };
-        img.onerror = () => {
-          bump();
-          resolve();
-        };
+        img.onload = () => done(true);
+        img.onerror = () => done(false);
         img.src = frames[i];
       });
 
+    // What is worth fetching right now: anchors anywhere (cheap timeline
+    // skeleton), plus detail inside the live window, nearest first.
+    const pickWanted = (n: number) => {
+      const here = frameIndexRef.current;
+      const scored: { i: number; s: number }[] = [];
+      for (let i = 0; i < total; i++) {
+        if (imgs[i] || pending.has(i)) continue;
+        const d = Math.abs(i - here);
+        const s = isAnchor(i) ? d * 0.2 : d <= cfg.window ? d : Infinity;
+        if (s !== Infinity) scored.push({ i, s });
+      }
+      scored.sort((a, b) => a.s - b.s);
+      return scored.slice(0, n).map((x) => x.i);
+    };
+
     (async () => {
-      const p = Math.min(cfg.priority, frames.length);
-      await Promise.all(Array.from({ length: p }, (_, i) => load(i)));
-      for (let i = p; i < frames.length && !cancelled; i++) {
+      // 1. first frame only — the film can appear immediately
+      const first = new Image();
+      first.decoding = 'async';
+      first.src = frames[0];
+      try {
+        await first.decode();
+      } catch {
+        await new Promise((r) => {
+          first.onload = r;
+          first.onerror = r;
+        });
+      }
+      if (cancelled) return;
+      imgs[0] = first;
+      loadedCountRef.current = 1;
+      sizeDirtyRef.current = true;
+      setReady(true);
+      setLoadPct(Math.round((1 / total) * 100));
+
+      // 2. keep the skeleton and the live window filled as the camera moves
+      while (!cancelled) {
+        if (!onScreenRef.current) {
+          // eslint-disable-next-line no-await-in-loop
+          await sleep(500);
+          continue;
+        }
+        const wanted = pickWanted(CONCURRENCY);
+        if (!wanted.length) {
+          // eslint-disable-next-line no-await-in-loop
+          await sleep(300);
+          continue;
+        }
         // eslint-disable-next-line no-await-in-loop
-        await load(i);
+        await Promise.all(wanted.map(load));
+        if (cancelled) return;
+        setLoadPct(Math.round((loadedCountRef.current / total) * 100));
+        wakeRef.current(); // a sharper frame may now exist for what is on screen
       }
     })();
 
     return () => {
       cancelled = true;
+      for (const img of imgs) if (img) img.src = '';
+      imagesRef.current = [];
     };
-  }, [frames, cfg.priority]);
+  }, [frames, cfg.cache]);
 
-  const activeBeat = useMemo(() => {
-    let idx = 0;
-    for (let i = 0; i < BEATS.length; i++) if (progress >= BEATS[i].at) idx = i;
-    return idx;
-  }, [progress]);
+  const nearestImage = useCallback((frame: number): HTMLImageElement | null => {
+    const imgs = imagesRef.current;
+    if (imgs[frame]) return imgs[frame];
+    for (let d = 1; d < imgs.length; d++) {
+      const a = imgs[frame - d];
+      if (a) return a;
+      const b = imgs[frame + d];
+      if (b) return b;
+    }
+    return null;
+  }, []);
 
-  const nearestImage = useCallback(
-    (frame: number): HTMLImageElement | null => {
-      const imgs = imagesRef.current;
-      if (imgs[frame]) return imgs[frame];
-      for (let d = 1; d < imgs.length; d++) {
-        if (imgs[frame - d]) return imgs[frame - d];
-        if (imgs[frame + d]) return imgs[frame + d];
+  /* ------------------------------------------------------------------ *
+   * Canvas sizing is driven by ResizeObserver, never read inside the loop
+   * (that would force a layout read on every animation frame).
+   * ------------------------------------------------------------------ */
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const measure = () => {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      // never render more pixels than the source frame can fill
+      const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 2 : 2);
+      const cur = cssSizeRef.current;
+      if (cur.w !== w || cur.h !== h || cur.dpr !== dpr) {
+        cssSizeRef.current = { w, h, dpr };
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        sizeDirtyRef.current = true;
+        wakeRef.current();
       }
-      return null;
-    },
-    []
-  );
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(canvas);
+    window.addEventListener('orientationchange', measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('orientationchange', measure);
+    };
+  }, [mobile]);
 
   const composed = mobile; // mobile frames are pre-cropped for portrait
-  const draw = useCallback(
-    (img: HTMLImageElement | null) => {
+  const paint = useCallback(
+    (img: HTMLImageElement) => {
       const canvas = canvasRef.current;
-      if (!canvas || !img || !img.width) return;
+      if (!canvas || !img.width) return;
       const ctx = canvas.getContext('2d', { alpha: false });
       if (!ctx) return;
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
 
-      const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 2.5 : 2);
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
-        canvas.width = Math.round(w * dpr);
-        canvas.height = Math.round(h * dpr);
-      }
       const cw = canvas.width;
       const ch = canvas.height;
-
       const ia = img.width / img.height;
       const ca = cw / ch;
       let rw = cw;
@@ -192,43 +330,114 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
       ctx.fillRect(0, 0, cw, ch);
       ctx.drawImage(img, (cw - rw) / 2, yBias, rw, rh);
     },
-    [composed, mobile]
+    [composed]
   );
 
-  // Render loop
+  /* ------------------------------------------------------------------ *
+   * The loop. Runs only while the hero is on screen and the tab is visible,
+   * and only touches the canvas when something actually changed.
+   * ------------------------------------------------------------------ */
+  const stop = useCallback(() => {
+    runningRef.current = false;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = null;
+  }, []);
+
+  const step = useCallback(() => {
+    const total = frames.length;
+    const target = targetRef.current;
+    const diff = target - currentRef.current;
+    const settled = Math.abs(diff) < 0.00005;
+    if (reduced || settled) currentRef.current = target;
+    else currentRef.current += diff * (mobile ? 0.14 : 0.11);
+    const p = Math.max(0, Math.min(1, currentRef.current));
+
+    // continuous UI written straight to the DOM — and only when it changed
+    const pct = `${(p * 100).toFixed(2)}%`;
+    if (pct !== barPctRef.current) {
+      barPctRef.current = pct;
+      if (barRef.current) barRef.current.style.width = pct;
+    }
+
+    const frame = Math.round(p * (total - 1));
+    frameIndexRef.current = frame;
+    if (frame !== counterFrameRef.current) {
+      counterFrameRef.current = frame;
+      if (counterRef.current) {
+        counterRef.current.textContent = ` · KARE ${String(frame + 1).padStart(3, '0')}/${total}`;
+      }
+    }
+
+    // beat changes are rare — that is the only thing React needs to know
+    let b = 0;
+    for (let i = 0; i < BEATS.length; i++) if (p >= BEATS[i].at) b = i;
+    if (b !== beatRef.current) {
+      beatRef.current = b;
+      setActiveBeat(b);
+    }
+
+    // Repaint only when the pixels would actually differ: what is on screen is
+    // decided by the resolved image, not by the frame index (neighbouring
+    // indices often resolve to the same fallback while frames stream in).
+    const img = nearestImage(frame);
+    if (img && (sizeDirtyRef.current || img !== drawnImgRef.current)) {
+      paint(img);
+      drawnFrameRef.current = frame;
+      drawnImgRef.current = img;
+      sizeDirtyRef.current = false;
+    }
+
+    // Nothing left to animate: park the loop until something wakes it.
+    if (settled && !playingRef.current) {
+      stop();
+      return;
+    }
+    if (runningRef.current) rafRef.current = requestAnimationFrame(step);
+  }, [frames.length, reduced, mobile, nearestImage, paint, stop]);
+
+  const start = useCallback(() => {
+    if (runningRef.current || !onScreenRef.current || document.hidden) return;
+    runningRef.current = true;
+    rafRef.current = requestAnimationFrame(step);
+  }, [step]);
+
   useEffect(() => {
-    const loop = () => {
-      const target = targetRef.current;
-      if (reduced) {
-        currentRef.current = target;
-      } else {
-        const diff = target - currentRef.current;
-        currentRef.current += Math.abs(diff) > 0.0002 ? diff * (mobile ? 0.14 : 0.11) : diff;
-      }
-      const p = Math.max(0, Math.min(1, currentRef.current));
+    wakeRef.current = start;
+  }, [start]);
 
-      if (Math.abs(p - reportedRef.current) > 0.004) {
-        reportedRef.current = p;
-        setProgress(p);
-      }
-
-      draw(nearestImage(Math.round(p * (frames.length - 1))));
-      rafRef.current = requestAnimationFrame(loop);
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const sync = () => {
+      if (onScreenRef.current && !document.hidden) start();
+      else stop();
     };
-    rafRef.current = requestAnimationFrame(loop);
+    const io = new IntersectionObserver(
+      ([e]) => {
+        onScreenRef.current = e.isIntersecting;
+        sync();
+      },
+      { rootMargin: '200px' }
+    );
+    io.observe(el);
+    document.addEventListener('visibilitychange', sync);
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      io.disconnect();
+      document.removeEventListener('visibilitychange', sync);
+      stop();
     };
-  }, [draw, nearestImage, reduced, mobile, frames.length]);
+  }, [start, stop]);
 
-  // Scroll → progress over the tall container
+  // Scroll → target progress. Cheap: one rect read, no React.
   useEffect(() => {
     const onScroll = () => {
-      if (isPlaying || !containerRef.current) return;
+      if (playingRef.current || !containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      const top = window.scrollY + rect.top;
       const dist = rect.height - window.innerHeight;
-      if (dist > 0) targetRef.current = Math.min(1, Math.max(0, (window.scrollY - top) / dist));
+      if (dist > 0) {
+        targetRef.current = Math.min(1, Math.max(0, -rect.top / dist));
+        start();
+      }
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -237,22 +446,26 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, [isPlaying]);
+  }, [start]);
 
   // Film mode
   useEffect(() => {
+    playingRef.current = isPlaying;
     if (!isPlaying) return;
+    start();
     const id = setInterval(() => {
       const next = targetRef.current + 0.003;
       targetRef.current = next >= 1 ? 0 : next;
+      start();
     }, 40);
     return () => clearInterval(id);
-  }, [isPlaying]);
+  }, [isPlaying, start]);
 
   const seekToBeat = (i: number) => {
     setIsPlaying(false);
     const p = Math.min(0.999, BEATS[i].at + 0.001);
     targetRef.current = p;
+    start();
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       const top = window.scrollY + rect.top;
@@ -264,12 +477,8 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
     }
   };
 
-  const ready = readyCount >= Math.min(cfg.priority, frames.length);
-  const loadPct = Math.round((readyCount / frames.length) * 100);
   const beat = BEATS[activeBeat];
   const isFinal = activeBeat === BEATS.length - 1;
-  const frameNo = Math.round(progress * (frames.length - 1)) + 1;
-
   const heightClass = reduced ? 'h-[150svh]' : mobile ? 'h-[440svh]' : 'h-[560vh]';
 
   return (
@@ -285,7 +494,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
         <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(120%_90%_at_50%_38%,transparent_35%,rgba(0,0,0,0.62)_100%)]" />
         <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-black/70 via-transparent to-black/75" />
 
-        {/* Loading veil — lifts once the priority frames are in */}
+        {/* Loading veil — lifts as soon as the first frame is decoded */}
         {!ready && (
           <div className="absolute inset-0 z-40 flex items-center justify-center bg-[#050505]">
             <div className="flex flex-col items-center gap-3">
@@ -335,7 +544,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
         <footer className="absolute bottom-0 inset-x-0 z-30 px-6 sm:px-12 pb-[calc(env(safe-area-inset-bottom)+2.5rem)] sm:pb-9">
           <div className="max-w-7xl mx-auto">
             <div className="relative h-px w-full bg-white/15">
-              <div className="absolute left-0 top-0 h-px bg-[#F27D26]" style={{ width: `${progress * 100}%` }} />
+              <div ref={barRef} className="absolute left-0 top-0 h-px bg-[#F27D26]" style={{ width: '0%' }} />
               {BEATS.map((b, i) => (
                 <button
                   key={i}
@@ -346,7 +555,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
                 >
                   <span
                     className={`block w-1.5 h-1.5 rounded-full transition-colors ${
-                      i === activeBeat ? 'bg-[#F27D26]' : progress >= b.at ? 'bg-white/70' : 'bg-white/30'
+                      i === activeBeat ? 'bg-[#F27D26]' : i < activeBeat ? 'bg-white/70' : 'bg-white/30'
                     } sm:group-hover:bg-[#F27D26]`}
                   />
                 </button>
@@ -366,7 +575,7 @@ export const CinematicSceneSequence: React.FC<CinematicSceneSequenceProps> = ({ 
               <span className="w-px h-3 bg-white/15" />
               <span className="text-white/40">
                 <span className="text-[#F27D26]">{beat.eyebrow}</span>
-                <span className="hidden sm:inline"> · KARE {String(frameNo).padStart(3, '0')}/{frames.length}</span>
+                <span ref={counterRef} className="hidden sm:inline" />
               </span>
             </div>
           </div>

@@ -73,6 +73,8 @@ export const ProjectsSection: React.FC = () => {
                       src={project.coverImage}
                       alt={project.title}
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-1000 ease-out filter brightness-90 contrast-105 group-hover:scale-105"
                     />
                     

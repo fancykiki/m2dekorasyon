@@ -11,9 +11,16 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="tr_TR" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- First cinematic frame starts downloading with the HTML, not after the JS
+         parses, so the hero can paint as early as possible. Media-gated so a
+         phone never fetches the desktop frame and vice versa. -->
+    <link rel="preload" as="image" href="/hero-seq/frame-0001.webp" type="image/webp" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="/hero-seq-m/frame-0001.webp" type="image/webp" media="(max-width: 767px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Only the weights the site actually uses. Cinzel was declared but never
+         applied, and no italic is used anywhere. -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

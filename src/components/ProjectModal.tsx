@@ -29,6 +29,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             src={project.coverImage}
             alt={project.title}
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover filter brightness-90"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/50" />
@@ -95,6 +97,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                       src={img}
                       alt={`${project.title} detail ${i + 1}`}
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
