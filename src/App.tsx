@@ -19,7 +19,8 @@ export default function App() {
   // Exposed on window.__lenis so programmatic scrolls (nav, CTAs) go through it.
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9, touchMultiplier: 1.4, anchors: true });
+    // touchMultiplier ~2 keeps the finger feeling like it drives the camera directly
+    const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9, touchMultiplier: 2, anchors: true });
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
     let raf = 0;
     const loop = (t: number) => {
