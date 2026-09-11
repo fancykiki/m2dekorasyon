@@ -1,0 +1,1803 @@
+{
+ "proje-1": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 2014,
+   "bytes": 839563,
+   "from": "IMG_5825.jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 617641,
+   "from": "IMG_5826.jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 618284,
+   "from": "IMG_5827.jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 534813,
+   "from": "IMG_5828.jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 680492,
+   "from": "IMG_5831.jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 589206,
+   "from": "IMG_5832.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 767259,
+   "from": "IMG_5833.jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 810567,
+   "from": "IMG_5834.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 530790,
+   "from": "IMG_5836.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 730362,
+   "from": "IMG_5837.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 998191,
+   "from": "IMG_5838.jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 808898,
+   "from": "IMG_5839.jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 785512,
+   "from": "IMG_5840.jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 735648,
+   "from": "IMG_5841.jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 841620,
+   "from": "IMG_5842.jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 759793,
+   "from": "IMG_5843.jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 545256,
+   "from": "IMG_5844.jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 658899,
+   "from": "IMG_5845.jpg"
+  },
+  {
+   "file": "19.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 641952,
+   "from": "IMG_5846.jpg"
+  },
+  {
+   "file": "20.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 636605,
+   "from": "IMG_5848.jpg"
+  },
+  {
+   "file": "21.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 688139,
+   "from": "IMG_5849.jpg"
+  },
+  {
+   "file": "22.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 625365,
+   "from": "IMG_5850.jpg"
+  },
+  {
+   "file": "23.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 1091077,
+   "from": "IMG_5851.jpg"
+  },
+  {
+   "file": "24.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 711937,
+   "from": "IMG_5853.jpg"
+  }
+ ],
+ "proje-2": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 739115,
+   "from": "_MG_4788 - Kopya.jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 739115,
+   "from": "_MG_4788.jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 797738,
+   "from": "_MG_4789 - Kopya.jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 797738,
+   "from": "_MG_4789.jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 632541,
+   "from": "_MG_4790.jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 692932,
+   "from": "_MG_4791.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 1077413,
+   "from": "_MG_4792.jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 847279,
+   "from": "_MG_4793.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 642164,
+   "from": "_MG_4794.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 549963,
+   "from": "_MG_4795.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 1158252,
+   "from": "_MG_4796.jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1976,
+   "bytes": 654439,
+   "from": "_MG_4797.jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 931681,
+   "from": "_MG_4798.jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2230,
+   "h": 2400,
+   "bytes": 916145,
+   "from": "_MG_4799.jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 1055172,
+   "from": "_MG_4800.jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 588766,
+   "from": "_MG_4801.jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 982138,
+   "from": "_MG_4802.jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 843855,
+   "from": "_MG_4803.jpg"
+  },
+  {
+   "file": "19.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 720645,
+   "from": "_MG_4804.jpg"
+  },
+  {
+   "file": "20.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 678978,
+   "from": "_MG_4805.jpg"
+  },
+  {
+   "file": "21.jpg",
+   "w": 1600,
+   "h": 2400,
+   "bytes": 1198454,
+   "from": "_MG_4806.jpg"
+  },
+  {
+   "file": "22.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 722574,
+   "from": "_MG_4807.jpg"
+  },
+  {
+   "file": "23.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 955197,
+   "from": "_MG_4808.jpg"
+  },
+  {
+   "file": "24.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 813796,
+   "from": "_MG_4809.jpg"
+  },
+  {
+   "file": "25.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 753313,
+   "from": "_MG_4810.jpg"
+  }
+ ],
+ "proje-3": [
+  {
+   "file": "01.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 94957,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.34 (1).jpeg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 85075,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.34.jpeg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 64786,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.35 (1).jpeg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 84457,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.35 (2).jpeg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 85902,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.35.jpeg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 92522,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.36.jpeg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 95489,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.37 (1).jpeg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 1080,
+   "h": 1080,
+   "bytes": 97201,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.37.jpeg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 1600,
+   "h": 1600,
+   "bytes": 88568,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.38 (1).jpeg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 1600,
+   "h": 1600,
+   "bytes": 90105,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.38 (2).jpeg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 1600,
+   "h": 1600,
+   "bytes": 132451,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.38.jpeg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 1600,
+   "h": 1600,
+   "bytes": 199350,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.39 (1).jpeg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 1600,
+   "h": 1600,
+   "bytes": 168667,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.39 (2).jpeg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 1600,
+   "h": 1600,
+   "bytes": 94913,
+   "from": "WhatsApp Image 2018-11-17 at 16.04.39.jpeg"
+  }
+ ],
+ "proje-4": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 569154,
+   "from": "IMG_6365.jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 518388,
+   "from": "IMG_6366.jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 554791,
+   "from": "IMG_6369.jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 418783,
+   "from": "IMG_6372.jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 489008,
+   "from": "IMG_6373.jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 500010,
+   "from": "IMG_6374.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 714032,
+   "from": "IMG_6375.jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 581677,
+   "from": "IMG_6377.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 811759,
+   "from": "IMG_6378.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 754203,
+   "from": "IMG_6379.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 602032,
+   "from": "IMG_6380.jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 1104075,
+   "from": "IMG_6381.jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 514042,
+   "from": "IMG_6382.jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 500812,
+   "from": "IMG_6383.jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 586691,
+   "from": "IMG_6385.jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 493546,
+   "from": "IMG_6387.jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 511930,
+   "from": "IMG_6388.jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 443424,
+   "from": "IMG_6389.jpg"
+  },
+  {
+   "file": "19.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 457558,
+   "from": "IMG_6390.jpg"
+  },
+  {
+   "file": "20.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 445965,
+   "from": "IMG_6391.jpg"
+  }
+ ],
+ "proje-5": [
+  {
+   "file": "01.jpg",
+   "w": 923,
+   "h": 720,
+   "bytes": 58973,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (1).jpeg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 1061,
+   "h": 716,
+   "bytes": 42931,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (2).jpeg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 761,
+   "h": 701,
+   "bytes": 41765,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (3).jpeg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 1022,
+   "h": 736,
+   "bytes": 67248,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (4).jpeg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 1079,
+   "h": 729,
+   "bytes": 90759,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (5).jpeg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 1067,
+   "h": 716,
+   "bytes": 81136,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (6).jpeg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 1014,
+   "h": 733,
+   "bytes": 80695,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (7).jpeg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 1026,
+   "h": 739,
+   "bytes": 71318,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (8).jpeg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 1069,
+   "h": 727,
+   "bytes": 89068,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (9).jpeg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 1029,
+   "h": 726,
+   "bytes": 52059,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (10).jpeg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 1033,
+   "h": 1238,
+   "bytes": 126015,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21 (11).jpeg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 1078,
+   "h": 728,
+   "bytes": 51082,
+   "from": "WhatsApp Image 2025-12-09 at 15.43.21.jpeg"
+  }
+ ],
+ "proje-6": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 463785,
+   "from": "IMG_9810.jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 448595,
+   "from": "IMG_9812.jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 616857,
+   "from": "IMG_9814.jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 462551,
+   "from": "IMG_9815.jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 637375,
+   "from": "IMG_9816.jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 421614,
+   "from": "IMG_9820.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 734515,
+   "from": "IMG_9821.jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 992572,
+   "from": "IMG_9822.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 921992,
+   "from": "IMG_9823.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 448732,
+   "from": "IMG_9824.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 432623,
+   "from": "IMG_9825.jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 624612,
+   "from": "IMG_9826.jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 587215,
+   "from": "IMG_9828.jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 514737,
+   "from": "IMG_9829.jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 529576,
+   "from": "IMG_9830.jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 480254,
+   "from": "IMG_9832.jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 552326,
+   "from": "IMG_9834.jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 549806,
+   "from": "IMG_9835.jpg"
+  },
+  {
+   "file": "19.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 502929,
+   "from": "IMG_9836.jpg"
+  },
+  {
+   "file": "20.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 678320,
+   "from": "IMG_9838.jpg"
+  },
+  {
+   "file": "21.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 712357,
+   "from": "IMG_9839.jpg"
+  },
+  {
+   "file": "22.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 603553,
+   "from": "IMG_9843.jpg"
+  },
+  {
+   "file": "23.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 498061,
+   "from": "IMG_9844.jpg"
+  }
+ ],
+ "proje-7": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 757692,
+   "from": "IMG_9793.jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 750841,
+   "from": "IMG_9794.jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 674191,
+   "from": "IMG_9796.jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 573421,
+   "from": "IMG_9797.jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 661397,
+   "from": "IMG_9798.jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 579831,
+   "from": "IMG_9799.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 926191,
+   "from": "IMG_9800.jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 700888,
+   "from": "IMG_9802.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 670337,
+   "from": "IMG_9803.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 707975,
+   "from": "IMG_9804.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 637413,
+   "from": "IMG_9805.jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 651315,
+   "from": "IMG_9806.jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 545743,
+   "from": "IMG_9807.jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 501075,
+   "from": "IMG_9808.jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 794042,
+   "from": "IMG_9809.jpg"
+  }
+ ],
+ "proje-8": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 645092,
+   "from": "PROJE-2 (1).jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 473429,
+   "from": "PROJE-2 (2).jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 538190,
+   "from": "PROJE-2 (3).jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 529021,
+   "from": "PROJE-2 (4).jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 496493,
+   "from": "PROJE-2 (5).jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 579661,
+   "from": "PROJE-2 (6).jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 674670,
+   "from": "PROJE-2 (7).jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 766062,
+   "from": "PROJE-2 (8).jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 643967,
+   "from": "PROJE-2 (9).jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 430885,
+   "from": "PROJE-2 (10).jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 438751,
+   "from": "PROJE-2 (11).jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 515202,
+   "from": "PROJE-2 (12).jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 655134,
+   "from": "PROJE-2 (13).jpg"
+  }
+ ],
+ "proje-9": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 583677,
+   "from": "4 (1).jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 432637,
+   "from": "4 (2).jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 708036,
+   "from": "4 (3).jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 2085,
+   "bytes": 967900,
+   "from": "4 (4).jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 644336,
+   "from": "4 (5).jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 821917,
+   "from": "4 (6).jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 822875,
+   "from": "4 (7).jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 678683,
+   "from": "4 (8).jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 682502,
+   "from": "4 (9).jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 807573,
+   "from": "4 (10).jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 671503,
+   "from": "4 (11).jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 772086,
+   "from": "4 (12).jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 706265,
+   "from": "4 (13).jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 591550,
+   "from": "4 (14).jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 482472,
+   "from": "4 (15).jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 715827,
+   "from": "4 (16).jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 476380,
+   "from": "4 (17).jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 959797,
+   "from": "4 (18).jpg"
+  },
+  {
+   "file": "19.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 941497,
+   "from": "4 (19).jpg"
+  },
+  {
+   "file": "20.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 1015553,
+   "from": "4 (20).jpg"
+  },
+  {
+   "file": "21.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 933533,
+   "from": "4 (21).jpg"
+  },
+  {
+   "file": "22.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 502752,
+   "from": "4 (22).jpg"
+  },
+  {
+   "file": "23.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 508537,
+   "from": "4 (23).jpg"
+  },
+  {
+   "file": "24.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 503743,
+   "from": "4 (24).jpg"
+  },
+  {
+   "file": "25.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 536880,
+   "from": "4 (25).jpg"
+  }
+ ],
+ "proje-10": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 858442,
+   "from": "PROJE-5 (1).jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 532902,
+   "from": "PROJE-5 (2).jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 872056,
+   "from": "PROJE-5 (3).jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 671159,
+   "from": "PROJE-5 (4).jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 776747,
+   "from": "PROJE-5 (5).jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 650732,
+   "from": "PROJE-5 (6).jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 898133,
+   "from": "PROJE-5 (7).jpg"
+  }
+ ],
+ "proje-11": [
+  {
+   "file": "01.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 255805,
+   "from": "PROJE-4 (1).JPG"
+  },
+  {
+   "file": "02.jpg",
+   "w": 1242,
+   "h": 826,
+   "bytes": 265979,
+   "from": "PROJE-4 (1).PNG"
+  },
+  {
+   "file": "03.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 261225,
+   "from": "PROJE-4 (2).JPG"
+  },
+  {
+   "file": "04.jpg",
+   "w": 1242,
+   "h": 825,
+   "bytes": 230836,
+   "from": "PROJE-4 (2).PNG"
+  },
+  {
+   "file": "05.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 234341,
+   "from": "PROJE-4 (3).JPG"
+  },
+  {
+   "file": "06.jpg",
+   "w": 1242,
+   "h": 818,
+   "bytes": 350854,
+   "from": "PROJE-4 (3).PNG"
+  },
+  {
+   "file": "07.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 255414,
+   "from": "PROJE-4 (4).JPG"
+  }
+ ],
+ "proje-12": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 694144,
+   "from": "1 (1).jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 580691,
+   "from": "1 (2).jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 544178,
+   "from": "1 (4).jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 1098631,
+   "from": "1 (20).jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 603997,
+   "from": "1 (23).jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 410941,
+   "from": "2.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 87669,
+   "from": "3.jpeg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 589763,
+   "from": "4.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 923348,
+   "from": "asma tavan-2.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 662714,
+   "from": "asma tavan.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 1080,
+   "h": 720,
+   "bytes": 37464,
+   "from": "banyo (1).jpeg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 697748,
+   "from": "banyo (1).jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 71306,
+   "from": "banyo (2).jpeg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 683072,
+   "from": "banyo (2).jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 730880,
+   "from": "banyo (3).jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 892950,
+   "from": "banyo (4).jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 497455,
+   "from": "banyo (5).jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 682994,
+   "from": "banyo (6).jpg"
+  },
+  {
+   "file": "19.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 571957,
+   "from": "banyo (7).jpg"
+  },
+  {
+   "file": "20.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 671051,
+   "from": "banyo (8).jpg"
+  },
+  {
+   "file": "21.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 1043577,
+   "from": "cam balkon.jpg"
+  },
+  {
+   "file": "22.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 637349,
+   "from": "duvar kağıdı-2.jpg"
+  },
+  {
+   "file": "23.jpg",
+   "w": 2400,
+   "h": 1599,
+   "bytes": 631089,
+   "from": "duvar kağıdı.jpg"
+  },
+  {
+   "file": "24.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 90714,
+   "from": "mutfak.jpeg"
+  },
+  {
+   "file": "25.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 78290,
+   "from": "PROJE-6 (11).jpeg"
+  },
+  {
+   "file": "26.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 79279,
+   "from": "PROJE-6 (12).jpeg"
+  },
+  {
+   "file": "27.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 57523,
+   "from": "PROJE-6 (13).jpeg"
+  }
+ ],
+ "proje-13": [
+  {
+   "file": "01.jpg",
+   "w": 1600,
+   "h": 1037,
+   "bytes": 197878,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.24.jpeg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 1600,
+   "h": 1007,
+   "bytes": 219150,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.25 (1).jpeg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 1600,
+   "h": 1041,
+   "bytes": 211211,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.25.jpeg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 118394,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.26 (1).jpeg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 215863,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.26.jpeg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 1600,
+   "h": 1146,
+   "bytes": 289577,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.27.jpeg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 1600,
+   "h": 1155,
+   "bytes": 190025,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.28 (1).jpeg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 1600,
+   "h": 1047,
+   "bytes": 124026,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.28.jpeg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 1600,
+   "h": 1041,
+   "bytes": 181929,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.29 (1).jpeg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 1600,
+   "h": 1060,
+   "bytes": 175383,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.29.jpeg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 1600,
+   "h": 1025,
+   "bytes": 215866,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.30 (1).jpeg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 207797,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.30.jpeg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 1600,
+   "h": 1060,
+   "bytes": 222062,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.31 (1).jpeg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 1600,
+   "h": 1066,
+   "bytes": 225279,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.31.jpeg"
+  }
+ ],
+ "proje-14": [
+  {
+   "file": "01.jpg",
+   "w": 1200,
+   "h": 1600,
+   "bytes": 189877,
+   "from": "WhatsApp Image 2018-11-10 at 15.09.59.jpeg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 1200,
+   "h": 1600,
+   "bytes": 151462,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.00 (1).jpeg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 1200,
+   "h": 1600,
+   "bytes": 122555,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.01 (1).jpeg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 143693,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.01.jpeg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 122574,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.02 (1).jpeg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 1200,
+   "h": 1600,
+   "bytes": 122841,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.02.jpeg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 1200,
+   "h": 1600,
+   "bytes": 131484,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.03 (1).jpeg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 1200,
+   "h": 1600,
+   "bytes": 115342,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.03.jpeg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 1600,
+   "h": 1200,
+   "bytes": 150319,
+   "from": "WhatsApp Image 2018-11-10 at 15.10.04.jpeg"
+  }
+ ],
+ "proje-15": [
+  {
+   "file": "01.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 608942,
+   "from": "IMG_9964.jpg"
+  },
+  {
+   "file": "02.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 527741,
+   "from": "IMG_9965.jpg"
+  },
+  {
+   "file": "03.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 609663,
+   "from": "IMG_9966.jpg"
+  },
+  {
+   "file": "04.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 484814,
+   "from": "IMG_9967.jpg"
+  },
+  {
+   "file": "05.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 641332,
+   "from": "IMG_9968.jpg"
+  },
+  {
+   "file": "06.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 636843,
+   "from": "IMG_9969.jpg"
+  },
+  {
+   "file": "07.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 554177,
+   "from": "IMG_9970.jpg"
+  },
+  {
+   "file": "08.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 501914,
+   "from": "IMG_9971.jpg"
+  },
+  {
+   "file": "09.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 563852,
+   "from": "IMG_9974.jpg"
+  },
+  {
+   "file": "10.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 532456,
+   "from": "IMG_9975.jpg"
+  },
+  {
+   "file": "11.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 513439,
+   "from": "IMG_9976.jpg"
+  },
+  {
+   "file": "12.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 439649,
+   "from": "IMG_9977.jpg"
+  },
+  {
+   "file": "13.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 524316,
+   "from": "IMG_9978.jpg"
+  },
+  {
+   "file": "14.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 589619,
+   "from": "IMG_9981.jpg"
+  },
+  {
+   "file": "15.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 612061,
+   "from": "IMG_9983.jpg"
+  },
+  {
+   "file": "16.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 609604,
+   "from": "IMG_9984.jpg"
+  },
+  {
+   "file": "17.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 479742,
+   "from": "IMG_9988.jpg"
+  },
+  {
+   "file": "18.jpg",
+   "w": 2400,
+   "h": 1600,
+   "bytes": 552412,
+   "from": "IMG_9990.jpg"
+  }
+ ]
+}

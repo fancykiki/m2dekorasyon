@@ -11,6 +11,16 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="tr_TR" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://m2dekorasyon.com/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="geo.region" content="TR-07" />
+    <meta name="geo.placename" content="Antalya" />
+    <meta name="geo.position" content="36.8841;30.7056" />
+    <meta name="ICBM" content="36.8841, 30.7056" />
+    <meta property="og:url" content="https://m2dekorasyon.com/" />
+    <meta property="og:image" content="https://m2dekorasyon.com/hero-seq/frame-0044.webp" />
+    <meta property="og:site_name" content="M2 Dekorasyon" />
+    <meta name="twitter:image" content="https://m2dekorasyon.com/hero-seq/frame-0044.webp" />
     <!-- First cinematic frame starts downloading with the HTML, not after the JS
          parses, so the hero can paint as early as possible. Media-gated so a
          phone never fetches the desktop frame and vice versa. -->
@@ -22,12 +32,29 @@
          applied, and no italic is used anywhere. -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "WebSite",
+      "@id": "https://m2dekorasyon.com/#website",
+      "url": "https://m2dekorasyon.com/",
       "name": "M2 Dekorasyon",
-      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-      "description": "Antalya merkezli lüks iç mimarlık, komple villa & daire renovasyonu ve mimari gergi tavan sistemleri uzmanı.",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://m2dekorasyon.com/#business"
+      }
+    },
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://m2dekorasyon.com/#business",
+      "name": "M2 Dekorasyon",
+      "url": "https://m2dekorasyon.com/",
+      "telephone": "+902423162020",
+      "email": "proje@m2dekorasyon.com",
+      "priceRange": "$$$",
+      "image": "https://m2dekorasyon.com/hero-seq/frame-0044.webp",
+      "description": "Antalya merkezli gergi tavan, duvar kağıdı, mutfak ve banyo dekorasyonu ile mimari projelendirme ve uygulama hizmetleri.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Şirinyalı Mah. İsmet Gökşen Cad. No: 42/B",
@@ -41,18 +68,120 @@
         "latitude": 36.8841,
         "longitude": 30.7056
       },
-      "url": "https://m2dekorasyon.com",
-      "telephone": "+902423162020",
-      "priceRange": "$$$",
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Muratpaşa, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Konyaaltı, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Kepez, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Döşemealtı, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Aksu, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Lara, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Serik, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Belek, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Manavgat, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Side, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Kemer, Antalya"
+        },
+        {
+          "@type": "Place",
+          "name": "Alanya, Antalya"
+        }
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
           "opens": "09:00",
           "closes": "19:00"
         }
-      ]
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Hizmetlerimiz",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Antalya Gergi Tavan Sistemleri",
+              "url": "https://m2dekorasyon.com/hizmetler/gergi-tavan/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Antalya Duvar Kağıdı Uygulama",
+              "url": "https://m2dekorasyon.com/hizmetler/duvar-kagidi/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Antalya Mutfak Dekorasyon ve Yenileme",
+              "url": "https://m2dekorasyon.com/hizmetler/mutfak-dekorasyon/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Antalya Banyo Dekorasyon ve Yenileme",
+              "url": "https://m2dekorasyon.com/hizmetler/banyo-dekorasyon/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Antalya Mimari Projelendirme ve Uygulama",
+              "url": "https://m2dekorasyon.com/hizmetler/mimari-projelendirme-uygulama/"
+            }
+          }
+        ]
+      }
     }
+  ]
+}
     </script>
   </head>
   <body class="bg-[#0c0d0e] text-[#e5e5e7] selection:bg-[#c8a97e] selection:text-[#0c0d0e] antialiased">

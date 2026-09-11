@@ -25,18 +25,6 @@ export interface Project {
   }[];
 }
 
-export interface Service {
-  id: string;
-  number: string;
-  title: string;
-  tagline: string;
-  description: string;
-  fullDetails: string;
-  image: string;
-  features: string[];
-  specifications: string[];
-}
-
 export interface ContactFormState {
   fullName: string;
   phone: string;
